@@ -1,4 +1,4 @@
-<main class="bg-linear-to-tr from-orange-200 to-yellow-900 min-h-screen flex items-center justify-center">
+<main class="bg-gradient-to-br from-orange-300 to-orange-100 min-h-screen flex items-center justify-center">
     <div class="flex-col justify-center">
         <div class="bg-white flex-col gap-8 p-12 rounded-xl font-[Playfair_Display]">
             <div class="">
@@ -8,12 +8,12 @@
 
                 </div>
                 <div class="gap-4">
-                    <div class="text-center text-[#251912] px-3 pt-3 my-8">
+                    <div class="text-center text-[#251912] px-3 pt-3 my -8">
                         <h1 class="text-2xl font-semibold">Bem Vindo de volta</h1>
                         <p class="tracking-widest text-1xl">Entre na sua harmonia</p>
                     </div>
 
-                    <div class="flex-col ">
+                    <div class="flex-col mt-4 ">
                         <label class="text-sm font-semibold text-[#50443D]">
                             Email
                         </label>
@@ -25,7 +25,7 @@
                     placeholder:text-[#82746C]" />
                         </div>
                     </div>
-                    <div class="flex-col">
+                    <div class="flex-col mt-4">
 
                         <div>
                             <label class="text-sm font-semibold text-[#50443D]">
@@ -37,13 +37,22 @@
                             <ng-icon name="tdesignLockOn" />
                             <input type="password" value={password} placeholder="********"
                                 autoComplete="current-password" required class="w-full bg-transparent text-[#82746C] outline-none
-                    placeholder:text-[#82746C]" />
+                                placeholder:text-[#82746C]" />
                         </div>
                         <div>
                             <label class="text-sm font-semibold text-xs mt-3">
                                 <a href="/forgot-password" class="text-[#7B5900] text-right float-right">
                                     Esqueceu a senha?
                                 </a>
+                            </label>
+                        </div>
+                        <div>
+                            <button class="btn btn-wide border-[0px] bg-[#5C3A21] mt-4">Entrar</button>  
+                        </div>
+                        <div class="">
+                            <label class="text-sm font-semibold mt-3 flex items-center gap-2">
+                               <p class="text-[#50443D] font-[Montserrat] font-thin "> Não tem conta? </p>
+                                <a href="/register" class="text-[#7B5900] ">   Cadastrar-se agora. </a>
                             </label>
                         </div>
                     </div>

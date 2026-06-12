@@ -19,7 +19,16 @@ export const routes: Routes = [
                 path: 'home', 
                 component: Home,
                 title: 'home page'
+            },{
+                path: '',
+                redirectTo:'/home',
+                pathMatch: "full"
             },
+            {
+                path: '**',
+                redirectTo:'/home',
+                pathMatch: "full"
+            }
         ]
-    }
+    },
 ];

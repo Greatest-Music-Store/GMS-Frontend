@@ -1,0 +1,23 @@
+<section
+  class="mx-auto w-full max-w-[1180px] px-3 py-4 sm:px-4 sm:py-6 [&_.carousel-control-next]:w-[12%] [&_.carousel-control-prev]:w-[12%] [&_.carousel-inner]:overflow-hidden [&_.carousel-inner]:rounded-lg [&_.carousel-item]:overflow-hidden [&_.carousel-item]:rounded-lg [&_.carousel]:overflow-hidden [&_.carousel]:rounded-lg"
+  aria-label="Eventos em destaque"
+>
+  <c-carousel class="block overflow-hidden rounded-lg">
+    <c-carousel-indicators></c-carousel-indicators>
+
+    <c-carousel-inner>
+      @for (slide of slides; track slide.src + $index) {
+        <c-carousel-item>
+          <img
+            [src]="slide.src"
+            [alt]="slide.alt"
+            class="block h-[240px] w-full object-cover object-center sm:h-[clamp(220px,42vw,520px)]"
+          />
+        </c-carousel-item>
+      }
+    </c-carousel-inner>
+
+    <c-carousel-control caption="Anterior" direction="prev"></c-carousel-control>
+    <c-carousel-control caption="Proximo" direction="next"></c-carousel-control>
+  </c-carousel>
+</section>
