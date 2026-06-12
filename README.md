@@ -6,6 +6,4 @@ Home, busca, produto, fav, carrinho, checkout, login, cadastro, conta,
 
 
 
-
-app/
     
