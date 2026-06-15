@@ -1,6 +1,6 @@
 
 
-import { Home } from "./home";
+import { Home } from "./page/home";
 
 const loginPage = {
     path: 'home',

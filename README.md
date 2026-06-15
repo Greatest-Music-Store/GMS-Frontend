@@ -16,3 +16,27 @@ baixo, ukulele
 PERCUSSÃO --> bateria, pandeiro, triângulo, cajón
 
 TECLAS --> piano, escaleta, cravo
+
+
+
+
+
+
+Login 
+Cadastro 
+Esqueci minha senha
+
+Home 
+
+Busca 
+
+Produto f
+
+account 
+
+
+fav 
+
+carrinho 
+
+checkout
