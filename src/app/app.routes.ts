@@ -8,6 +8,7 @@ import { Account } from './features/account/account';
 import { Favorite } from './features/favorite/favorite';
 import { Cart } from './features/cart/cart';
 import { Checkout } from './features/checkout/checkout';
+import { Product } from './features/product/product';
 
 export const routes: Routes = [
 
@@ -39,6 +40,11 @@ export const routes: Routes = [
                 path: '',
                 redirectTo: '/home',
                 pathMatch: "full"
+            },
+            {
+                path:'produto/:id',
+                title: 'nome do produto',
+                component: Product
             },
              {
                 path: 'jorge',
