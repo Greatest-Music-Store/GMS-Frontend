@@ -1,15 +1,30 @@
-<main>
-    @if (product) {
-  <h1>{{ product.name }}</h1>
+<main class="px-16 py-12">
+  @if (product) {
+  <div class="flex items-start gap-12">
 
-  <img [src]="product.url" [alt]="product.name">
+    <div class="flex flex-col gap-4">
+      <img [src]="product.url" [alt]="product.name" class="w-[1000px] h-[1000px] object-cover">
+      <div class="items-center">
+        <div class="flex items-center gap-3">
+          <img [src]="product.url" [alt]="product.name" class="w-[240px] h-[240px] object-cover">
+          <img [src]="product.url" [alt]="product.name" class="w-[240px] h-[240px] object-cover">
+          <img [src]="product.url" [alt]="product.name" class="w-[240px] h-[240px] object-cover">
+          <img [src]="product.url" [alt]="product.name" class="w-[240px] h-[240px] object-cover">
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 text-black">
+      <p class="text-[#7B5900] font-thin tracking-wider font-[Montserrat]">{{ product.brand }}</p>
+      <h1 class="text-5xl text-[#42240D] font-bold font-[Playfair_Display]">
+        {{ product.name }}
+      </h1>
+      <div class="flex items-center">
+        <ng-icon name="tdesignStarFilled" color="#FCCA66"></ng-icon>
+        <h2>{{ product.rating }}</h2>
+      </div>
+      
+    </div>
 
-  <p>{{ product.brand }}</p>
-
-  <p>R$ {{ product.price }}</p>
-
-  <p>{{ product.description }}</p>
-}
-
-
+  </div>
+  }
 </main>

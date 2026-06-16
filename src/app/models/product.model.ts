@@ -1,4 +1,4 @@
-import { Feedback } from "./feedback.model";
+import { FeedbackModel } from "./feedback.model";
 
 export interface ProductModels {
     productId: string;
@@ -13,7 +13,7 @@ export interface ProductModels {
     categoryName: string;
     subcategoryName: string;
 
-    feedbacks: Feedback[];
+    feedbacks: FeedbackModel[];
 
     categoryID: string;
     subCategoryId: string;

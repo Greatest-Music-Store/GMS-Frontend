@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ProductModels } from '../../models/product.model';
 import { ProductsService } from '../../core/services/products/products';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { tdesignStarFilled } from '@ng-icons/tdesign-icons';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 
 @Component({
   selector: 'app-product',
-  imports: [],
+  imports: [NgIcon],
   templateUrl: './product.html',
   styleUrl: './product.css',
+  viewProviders: [provideIcons({ tdesignStarFilled})]
 })
 export class Product implements OnInit{
 
@@ -15,7 +19,8 @@ export class Product implements OnInit{
 
   constructor(
     private productService: ProductsService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    private titleService: Title,
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +33,10 @@ export class Product implements OnInit{
   this.productService.getProductById(id).subscribe({
     next: (product) => {
       this.product = product;
+
+      this.titleService.setTitle(
+      `${product.name} | Greatest Music Store`
+    );
     },
     error: (error) => {
       console.error(error);

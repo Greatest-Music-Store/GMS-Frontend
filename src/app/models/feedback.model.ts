@@ -1,4 +1,4 @@
-export interface Feedback {
+export interface FeedbackModel {
     id: string;
     userId: string;
     description: string;
