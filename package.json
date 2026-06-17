@@ -30,6 +30,7 @@
     "@ng-icons/heroicons": "^33.2.3",
     "@ng-icons/tdesign-icons": "^33.2.3",
     "@primeuix/themes": "^2.0.3",
+    "cpf-cnpj-validator": "^2.1.2",
     "daisyui": "^5.5.23",
     "express": "^5.1.0",
     "ngx-bootstrap": "^21.2.0",

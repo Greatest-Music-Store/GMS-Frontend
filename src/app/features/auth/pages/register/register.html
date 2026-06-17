@@ -1,106 +1,85 @@
 <main
-    class=" bg-[url(https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/bglogin.png)] bg-no-repeat bg-cover bg-center h-dvh flex items-center justify-center text-[#42240D]">
-    <div class="flex-col justify-center">
-        <div class="bg-[#FAF6F0] shadow-2xl flex-col gap-8 p-12  rounded-xl font-[Playfair_Display]">
-            <div class="">
-                <div class="text-left pb-4">
-                    <h1 class="text-4xl font-semibold">Crie sua Conta</h1>
-                    <p>Inicie sua jornada na curadoria mais exclusiva de
-                        instrumentos.</p>
+    class="bg-[url(https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/bglogin.png)] bg-no-repeat bg-cover bg-center min-h-dvh flex items-center justify-center text-[#42240D] p-4">
+    <div class="w-full max-w-2xl">
+        <div class="bg-[#FAF6F0] shadow-2xl p-12 rounded-xl font-[Playfair_Display]">
+            <div class="text-left pb-4">
+                <h1 class="text-4xl font-semibold">Crie sua Conta</h1>
+                <p>Inicie sua jornada na curadoria mais exclusiva de instrumentos.</p>
+            </div>
+
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="my-4">
+                    <label>Nome Completo</label>
+                    <div class="mt-2 rounded-md bg-[#F5E9DA] px-4 py-3">
+                        <input type="text" formControlName="name" placeholder="Jorge da Silva"
+                            class="w-full bg-transparent text-[#82746C] outline-none" />
+                    </div>
                 </div>
-                <form class="gap">
-                    <div class="gap-4 my-4">
-                        <div>
-                            <label>
-                                Nome Completo
-                            </label>
-                        </div>
-                        <div class="mt-2 flex items-center gap-3 rounded-md bg-[#F5E9DA] px-4 py-3">
-                            <input type="text" placeholder="Jorge da silva"
-                                class="w-full bg-transparent text-[#82746C] outline-none">
+
+                <div class="my-4">
+                    <label>CPF</label>
+                    <div class="mt-2 rounded-md bg-[#F5E9DA] px-4 py-3">
+                        <input type="text" formControlName="cpf" placeholder="607.670.067-67"
+                            class="w-full bg-transparent text-[#82746C] outline-none" />
+                    </div>
+                </div>
+
+                <div class="my-4">
+                    <label>Telefone</label>
+                    <div class="mt-2 rounded-md bg-[#F5E9DA] px-4 py-3">
+                        <input type="text" formControlName="phone" placeholder="(51) 99999-9999"
+                            class="w-full bg-transparent text-[#82746C] outline-none" />
+                    </div>
+                </div>
+
+                <div class="my-4">
+                    <label>Email</label>
+                    <div class="mt-2 rounded-md bg-[#F5E9DA] px-4 py-3">
+                        <input type="email" formControlName="email" placeholder="email@email.com" autocomplete="email"
+                            class="w-full bg-transparent text-[#82746C] outline-none" />
+                    </div>
+                </div>
+
+                <div class="my-4 flex gap-4">
+                    <div class="w-full">
+                        <label>Senha</label>
+                        <div class="mt-2 rounded-md bg-[#F5E9DA] px-4 py-3">
+                            <input type="password" formControlName="password" placeholder="********"
+                                autocomplete="new-password" class="w-full bg-transparent text-[#82746C] outline-none" />
                         </div>
                     </div>
 
-                    <div class="gap-4 my-4">
-                        <div>
-                            <label>
-                                CPF
-                            </label>
+                    <div class="w-full">
+                        <label>Confirmar senha</label>
+                        <div class="mt-2 rounded-md bg-[#F5E9DA] px-4 py-3">
+                            <input type="password" formControlName="confirmPassword" placeholder="********"
+                                autocomplete="new-password" class="w-full bg-transparent text-[#82746C] outline-none" />
                         </div>
-                        <div class="mt-2 flex items-center gap-3 rounded-md bg-[#F5E9DA] px-4 py-3">
-                            <input type="text" name="jorge" id="CPF" placeholder="607.670.067-67"
-                                class="w-full bg-transparent text-[#82746C] outline-none">
-                        </div>
-                    </div>
-                    <div class="gap-4 my-4">
-                        <div>
-                            <label>
-                                Telefone
-                            </label>
-                        </div>
-                        <div class="mt-2 flex items-center gap-3 rounded-md bg-[#F5E9DA] px-4 py-3">
-                            <input type="text" name="jorge" id="CPF" placeholder="607.670.067-67"
-                                class="w-full bg-transparent text-[#82746C] outline-none">
-                        </div>
-                    </div>
-                    <div class="gap-4 my-4">
-                        <div>
-                            <label>
-                                Email
-                            </label>
-                        </div>
-                        <div class="mt-2 flex items-center gap-3 rounded-md bg-[#F5E9DA] px-4 py-3">
-                            <input type="email" placeholder="email@email.co" autoComplete="email" required
-                                class="w-full bg-transparent text-[#82746C] outline-none" />
-                        </div>
-                    </div>
-                    <div class="gap-4 my-4 flex items-center justify-center">
-                        <div class="flex-col w-full"> 
-                            <div>
-                                <label>
-                                    senha
-                                </label>
-                            </div>
-                            <div class="mt-2 flex items-center gap-3 rounded-md bg-[#F5E9DA] px-4 py-3">
-                                <input type="password" placeholder="******" autoComplete="email" required
-                                    class="w-full bg-transparent text-[#82746C] outline-none" />
-                            </div>
-                        </div>
-                        <div class="flex-col w-full">
-                            <div class="">
-                                <label>
-                                    senha
-                                </label>
-                            </div>
-                            <div class="mt-2 flex items-center gap-3 rounded-md bg-[#F5E9DA] px-4 py-3">
-                                <input type="password" placeholder="******" autoComplete="email" required
-                                    class="w-full bg-transparent text-[#82746C] outline-none" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 my-4">
-                        <div class="">
-                            <input type="checkbox" class="bg-white ">
-                        </div>
-                        <div>
-                            <p>Eu concordo com os <a href="#" class="font-bold">Termos e Condições</a> e a <a href="#" class="font-bold" >Política de Privacidade</a>
-                                da Greatest Music Store.</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <button class="btn w-full border-[0px] bg-[#5C3A21]">Entrar</button>
-                        </div>
-                    </div>
-                </form>
-                <div>
-                    <div>
-                        
-                    </div>
-                    <div class="gap-4 my-4">
-                        <p> Já possui uma conta? <a href="/login" class="font-bold">Entre aqui</a></p>
                     </div>
                 </div>
+
+                <div class="flex items-start gap-4 my-4">
+                    <input type="checkbox" class="mt-1" />
+
+                    <p>
+                        Eu concordo com os
+                        <a href="#" class="font-bold">Termos e Condições</a>
+                        e a
+                        <a href="#" class="font-bold">Política de Privacidade</a>
+                        da Greatest Music Store.
+                    </p>
+                </div>
+
+                <button type="submit" class="w-full rounded-md bg-[#5C3A21] py-3 text-white font-semibold">
+                    Criar conta
+                </button>
+            </form>
+
+            <div class="my-4">
+                <p>
+                    Já possui uma conta?
+                    <a href="/login" class="font-bold">Entre aqui</a>
+                </p>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ import { Favorite } from './features/favorite/favorite';
 import { Cart } from './features/cart/cart';
 import { Checkout } from './features/checkout/checkout';
 import { Product } from './features/product/product';
+import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-password';
 
 export const routes: Routes = [
 
@@ -21,6 +22,11 @@ export const routes: Routes = [
         path: 'register',
         title: 'cadastrar-se',
         component: Register,
+    },
+    {
+        path: 'forgot-password',
+        title: 'esqueceu a senha',
+        component: ForgotPassword,
     },
     {
         path: '',
