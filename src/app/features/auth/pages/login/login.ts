@@ -4,6 +4,8 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth/auth';
 import { LoginRequest } from '../../../../models/auth/login-request.model';
+import { AuthStore } from '../../../../core/stores/auth.store';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [NgIcon, ReactiveFormsModule],
@@ -22,7 +24,9 @@ export class Login {
     })
   });
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private authStore: AuthStore,
+    private router: Router,
   ) { }
 
   login() {
@@ -35,10 +39,17 @@ export class Login {
       .subscribe({
         next: (response) => {
           console.log(response);
+        localStorage.setItem('token', response.token);
+
+        this.authStore.login(response.token)
+
+        this.router.navigate(['/home']);
+       
         },
         error: (error) => {
           console.log(error);
         }
       });
   }
+  
 }

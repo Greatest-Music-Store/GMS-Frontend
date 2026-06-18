@@ -6,17 +6,20 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { providePrimeNG } from 'primeng/config';
 import { provideHttpClient } from '@angular/common/http';
 import Aura from '@primeuix/themes/aura';
-
-
+import { provideStore } from '@ngrx/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),provideHttpClient(),
-    provideRouter(routes), provideClientHydration(withEventReplay()), provideAnimations(),
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
+    provideAnimations(),
     providePrimeNG({
       theme: {
-        preset: Aura
-      }
-    })
-  ]
+        preset: Aura,
+      },
+    }),
+    provideStore(),
+  ],
 };

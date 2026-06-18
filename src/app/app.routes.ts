@@ -52,8 +52,7 @@ export const routes: Routes = [
                 component: Product
             },
              {
-                path: 'jorge',
-                title: 'conta',
+                path: 'conta',
                 component: Account,
             },
             {

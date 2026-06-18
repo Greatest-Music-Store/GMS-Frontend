@@ -1,17 +1,17 @@
 import { FeedbackModel } from "./feedback.model";
 
 export interface FavoriteModel {
-    productId: String;
-    name: String;
-    brand: String;
+    productId: string;
+    name: string;
+    brand: string;
     price: number;
-    url: String;
-    description: String;
+    url: string;
+    description: string;
     rating: number;
     quantity: number;
-    categoryName: String;
-    subcategoryName: String;
+    categoryName: string;
+    subcategoryName: string;
     feedbacks: FeedbackModel[];
-    categoryID: String;
-    subCategoryId: String;
+    categoryID: string;
+    subCategoryId: string;
 }

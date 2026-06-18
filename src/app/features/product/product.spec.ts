@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 
+import { ProductsService } from '../../core/services/products/products';
 import { Product } from './product';
 
 describe('Product', () => {
@@ -9,6 +11,24 @@ describe('Product', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Product],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: {
+                get: () => null,
+              },
+            },
+          },
+        },
+        {
+          provide: ProductsService,
+          useValue: {
+            getProductById: () => undefined,
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Product);
