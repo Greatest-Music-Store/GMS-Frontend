@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     provideRouter(routes),
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(),
     provideAnimations(),
     providePrimeNG({
       theme: {

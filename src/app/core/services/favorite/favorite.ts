@@ -1,12 +1,19 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../../api.config';
+import { FavoriteModel } from '../../../models/favorite.model';
+
+
 @Injectable({
   providedIn: 'root',
 })
-export class Favorite {
+export class FavoriteService {
 
-  private apiUrl = `${API_CONFIG.baseUrl}/`
+  constructor(private http: HttpClient) {}
 
-  
+  favorite( id: string){
+    return this.http.get<FavoriteModel[]>(
+      `${API_CONFIG.baseUrl}/api/Favorite/user/${id}`
+    );
+  }
 }

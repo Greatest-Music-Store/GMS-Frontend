@@ -2,9 +2,8 @@
   <section class="mx-auto w-full max-w-6xl">
     <h1 class="font-[Playfair_Display] text-4xl font-bold text-[#42240D]">
       Favoritos
-    </h1>
-
-    @if (favoriteProducts.length > 0) {
+    </h1> 
+    
       <div class="mt-8 grid gap-4">
         @for (product of favoriteProducts; track trackByProductId($index, product)) {
           <article class="flex flex-col gap-4 rounded-lg bg-white p-4 shadow-sm sm:flex-row sm:items-center">
@@ -17,7 +16,7 @@
                 {{ product.brand }}
               </p>
               <a
-                [href]="'/produto/' + product.productId"
+                 [href]="'/produto/' + product.productId"
                 class="mt-1 line-clamp-2 font-[Montserrat] text-lg font-semibold text-[#42240D]"
               >
                 {{ product.name }}
@@ -26,7 +25,7 @@
                
               </p>
               <p class="mt-3 font-[Montserrat] text-2xl font-extrabold text-[#FF5A00]">
-                {{ formatPrice(product.price) }}
+                {{ product.price }}
               </p>
             </div>
 
@@ -36,9 +35,9 @@
                 class="grid h-10 w-10 place-items-center rounded-md bg-[#42240D] text-white"
                 title="Adicionar ao carrinho"
                 aria-label="Adicionar ao carrinho"
-                (click)="addToCart(product.productId)"
+                
               >
-                <ng-icon name="tdesignCartAdd" size="22"></ng-icon>
+                <ng-icon name="tdesignCartAdd" style="font-size: 22px;"></ng-icon>
               </button>
               <button
                 type="button"
@@ -47,15 +46,15 @@
                 aria-label="Remover dos favoritos"
                 (click)="removeFavorite(product.productId)"
               >
-                <ng-icon name="tdesignHeartFilled" size="22"></ng-icon>
+                <ng-icon name="tdesignHeartFilled" style="font-size: 22px;"></ng-icon>
               </button>
             </div>
           </article>
         }
       </div>
-    } @else {
+
       <div class="mt-8 rounded-lg bg-white p-8 text-center shadow-sm">
-        <ng-icon name="tdesignHeartFilled" size="36" class="text-[#FF5A00]"></ng-icon>
+        <ng-icon name="tdesignHeartFilled" style="font-size: 36px;" class="text-[#FF5A00]"></ng-icon>
         <h2 class="mt-4 font-[Playfair_Display] text-2xl font-bold text-[#42240D]">
           Nenhum favorito salvo
         </h2>
@@ -63,6 +62,6 @@
           Seus produtos favoritos aparecem aqui.
         </p>
       </div>
-    }
+    
   </section>
 </main>
