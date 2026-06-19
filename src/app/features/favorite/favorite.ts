@@ -1,17 +1,14 @@
-import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { tdesignCartAdd, tdesignHeartFilled, } from '@ng-icons/tdesign-icons';
-import { FavoriteModel } from '../../models/favorite.model';
+import { tdesignCartAdd, tdesignHeartFilled } from '@ng-icons/tdesign-icons';
+
 import { FavoriteService } from '../../core/services/favorite/favorite';
-import { AuthStore } from '../../core/stores/auth.store';
-import { RouterLink } from '@angular/router';
+import { ProductModels } from '../../models/product.model';
 
 @Component({
   selector: 'app-favorite',
-  imports: [DatePipe, NgIcon, RouterLink],
+  imports: [NgIcon],
   templateUrl: './favorite.html',
-
   viewProviders: [
     provideIcons({
       tdesignCartAdd,
@@ -20,54 +17,44 @@ import { RouterLink } from '@angular/router';
   ],
 })
 export class Favorite implements OnInit {
-  favoriteProducts: FavoriteModel[] = [];
-  loaded = false;
+  favoriteProducts = signal<ProductModels[]>([]);
+  loaded = signal(false);
 
   constructor(
-    private favoriteService: FavoriteService,
-    private authStore: AuthStore
-  ) { }
+    private favoriteService: FavoriteService
+  ) {}
 
   ngOnInit(): void {
-    const userId = this.authStore.id();
+    this.loadFavorites();
+  }
 
-    console.log('USER ID:', userId);
-
-    if (!userId) {
-      console.log('Sem userId. Token não existe ou não foi decodificado.');
-      return;
-    }
-
-    this.favoriteService.favorite(userId).subscribe({
+  private loadFavorites(): void {
+    this.favoriteService.getFavorite().subscribe({
       next: (products) => {
-        console.log('FAVORITOS DA API:', products);
-        this.favoriteProducts = products ?? [];
-        this.loaded = true;
+        this.favoriteProducts.set(products ?? []);
+        this.loaded.set(true);
       },
       error: (error) => {
-        console.log('ERRO FAVORITOS:', error);
-        this.favoriteProducts = [];
-        this.loaded = true;
+        console.error('Erro ao carregar favoritos:', error);
+        this.favoriteProducts.set([]);
+        this.loaded.set(true);
       }
     });
   }
 
   addToCart(productId: string): void {
-    void productId;
+    console.log('Adicionar ao carrinho:', productId);
   }
 
   removeFavorite(productId: string): void {
-    void productId;
+    console.log('Remover favorito:', productId);
   }
 
-  trackByProductId(_: number, product: FavoriteModel): string {
+  trackByProductId(_: number, product: ProductModels): string {
     return product.productId;
   }
 
-  formatPrice(value: number): string {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(value);
+  mainImage(product: ProductModels): string {
+    return product.imageUrls?.[0] ?? product.imageUrls ?? '';
   }
 }

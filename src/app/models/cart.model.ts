@@ -1,11 +1,11 @@
 import { FeedbackModel } from "./feedback.model";
 
-export interface Cart {
+export interface CartModel {
     productId: String;
     name: String;
     brand: String;
     price: number;
-    url: String;
+    imageUrls: string[];
     description: String;
     rating: number;
     quantity: number;

@@ -44,5 +44,9 @@ export class Product implements OnInit{
   });
 }
 
+  mainImage(product: ProductModels): string {
+    return product.imageUrls?.[0] ?? '';
+  }
+
   
 }

@@ -1,17 +1,15 @@
-import { FeedbackModel } from "./feedback.model";
+import { ProductModels } from "./product.model";
 
 export interface FavoriteModel {
+    product?: ProductModels;
+    Product?: ProductModels;
+}
+
+export interface FavoriteRequest {
     productId: string;
-    name: string;
-    brand: string;
-    price: number;
-    url: string;
-    description: string;
-    rating: number;
-    quantity: number;
-    categoryName: string;
-    subcategoryName: string;
-    feedbacks: FeedbackModel[];
-    categoryID: string;
-    subCategoryId: string;
+}
+
+export interface FavoriteResponse {
+    isFavorite: boolean;
+    favorite: FavoriteModel;
 }

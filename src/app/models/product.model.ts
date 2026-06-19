@@ -5,7 +5,7 @@ export interface ProductModels {
     name: string;
     brand: string;
     price: number;
-    url: string;
+    imageUrls: string[];
     description: string;
     rating: number;
     quantity: number;
