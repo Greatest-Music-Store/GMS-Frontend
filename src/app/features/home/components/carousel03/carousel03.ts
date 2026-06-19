@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  CarouselComponent,
-  CarouselConfig,
-  CarouselControlComponent,
-  CarouselIndicatorsComponent,
-  CarouselInnerComponent,
-  CarouselItemComponent
-} from '@coreui/angular';
+import { CarouselConfig, } from '@coreui/angular';
 import { CarouselCustomConfig } from './carousel.config';
 
 interface CarouselSlide {
@@ -20,11 +13,6 @@ interface CarouselSlide {
   styleUrl: './carousel.css', 
   standalone: true,
   imports: [
-    CarouselComponent,
-    CarouselIndicatorsComponent,
-    CarouselInnerComponent,
-    CarouselItemComponent,
-    CarouselControlComponent
   ],
   providers: [{ provide: CarouselConfig, useClass: CarouselCustomConfig }]
 })

@@ -1,17 +1,17 @@
 import { FeedbackModel } from "./feedback.model";
 
 export interface CartModel {
-    productId: String;
-    name: String;
-    brand: String;
+    productId: string;
+    name: string;
+    brand: string;
     price: number;
     imageUrls: string[];
-    description: String;
+    description: string;
     rating: number;
     quantity: number;
-    categoryName: String;
-    subcategoryName: String;
+    categoryName: string;
+    subcategoryName: string;
     feedbacks: FeedbackModel[];
-    categoryID: String;
-    subCategoryId: String;
+    categoryID: string;
+    subCategoryId: string;
 }

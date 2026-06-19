@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_CONFIG } from '../../api.config';
-import { FavoriteModel, FavoriteRequest, FavoriteResponse } from '../../../models/favorite.model';
 import { Observable } from 'rxjs';
-import { ProductModels } from '../../../models/product.model';
 
+import { API_CONFIG } from '../../api.config';
+import {
+  FavoriteModel,
+  FavoriteRequest,
+  FavoriteResponse,
+} from '../../../models/favorite.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoriteService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addFavorite(productId: string): Observable<FavoriteResponse> {
     const body: FavoriteRequest = { productId };
@@ -22,15 +24,15 @@ export class FavoriteService {
     );
   }
 
-  getFavorite() {
-    return this.http.get<ProductModels[]>(
+  getFavorite(): Observable<FavoriteModel[]> {
+    return this.http.get<FavoriteModel[]>(
       `${API_CONFIG.baseUrl}/api/Favorite/user`
     );
   }
 
-  getFavoriteByProduct(userId: string, productId: string): Observable<FavoriteModel> {
+  getFavoriteByProduct(productId: string): Observable<FavoriteModel> {
     return this.http.get<FavoriteModel>(
-      `${API_CONFIG.baseUrl}/api/Favorite/${userId}/${productId}`
+      `${API_CONFIG.baseUrl}/api/Favorite/${productId}`
     );
   }
 }

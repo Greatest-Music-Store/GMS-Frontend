@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { tdesignMail, tdesignLockOn, tdesignUser, tdesignAssignmentUserFilled } from '@ng-icons/tdesign-icons'
-import { NgIcon, provideIcons } from '@ng-icons/core';
+//import { NgIcon, provideIcons } from '@ng-icons/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { cpfValidator } from 'cpf-cnpj-validator/angular';
 import { matchValidator } from '../../../../core/validators/match.validator';
@@ -11,9 +11,9 @@ import { RegisterRequest } from '../../../../models/auth/register-request.model'
 
 @Component({
   selector: 'app-register',
-  imports: [NgIcon, ReactiveFormsModule],
+  imports: [ ReactiveFormsModule],
   templateUrl: './register.html',
-  viewProviders: [provideIcons({ tdesignLockOn, tdesignMail, tdesignUser, tdesignAssignmentUserFilled })],
+  //viewProviders: [provideIcons({ tdesignLockOn, tdesignMail, tdesignUser, tdesignAssignmentUserFilled })],
 })
 export class Register {
   registerForm!: FormGroup
