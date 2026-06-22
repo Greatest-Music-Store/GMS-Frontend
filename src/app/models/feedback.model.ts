@@ -4,5 +4,4 @@ export interface FeedbackModel {
     description: string;
     rating: number;
     productId: string;
-
 }

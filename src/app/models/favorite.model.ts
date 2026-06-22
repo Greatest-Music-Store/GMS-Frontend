@@ -8,7 +8,6 @@ export interface FavoriteModel {
 export interface FavoriteRequest {
     productId: string;
 }
-
 export interface FavoriteResponse {
     isFavorite: boolean;
     favorite: FavoriteModel;

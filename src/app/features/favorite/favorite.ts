@@ -1,27 +1,25 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { tdesignCartAdd, tdesignHeartFilled } from '@ng-icons/tdesign-icons';
-
 import { FavoriteService } from '../../core/services/favorite/favorite';
 import { ProductModels } from '../../models/product.model';
 import { FavoriteModel } from '../../models/favorite.model';
+import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
 
 @Component({
   selector: 'app-favorite',
-  imports: [NgIcon],
+  imports: [NgIcon, FavoriteButton],
   templateUrl: './favorite.html',
   viewProviders: [
     provideIcons({
-      tdesignCartAdd,
-      tdesignHeartFilled,
-    }),
-  ],
+      tdesignCartAdd, tdesignHeartFilled,
+    }),],
 })
 export class Favorite implements OnInit {
   favoriteProducts = signal<ProductModels[]>([]);
   loaded = signal(false);
 
-  constructor(private favoriteService: FavoriteService) {}
+  constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit(): void {
     this.loadFavorites();

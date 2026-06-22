@@ -17,4 +17,8 @@ export class ProductsService {
     `${API_CONFIG.baseUrl}/api/product/${id}`
   );
 }
+
+  getProductsSmall(){
+    return Promise.resolve(this.getProductById)
+  }
 }

@@ -6,8 +6,9 @@
       @if (mainImage(product)) {
       <img [src]="mainImage(product)" [alt]="product.name" class="w-[1000px] h-[1000px] object-cover">
       } @else {
-      <div class="flex h-[600px] w-[600px] items-center justify-center bg-[#FFF9F4] font-[Montserrat] text-lg font-semibold text-[#7B5900]">
-       imagem
+      <div
+        class="flex h-[600px] w-[600px] items-center justify-center bg-[#FFF9F4] font-[Montserrat] text-lg font-semibold text-[#7B5900]">
+        imagem
       </div>
       }
       <div class="items-center">
@@ -27,7 +28,7 @@
         <ng-icon name="tdesignStarFilled" color="#FCCA66"></ng-icon>
         <h2>{{ product.rating }}</h2>
       </div>
-      
+
     </div>
 
   </div>

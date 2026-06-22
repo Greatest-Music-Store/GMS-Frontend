@@ -9,7 +9,6 @@ export interface ProductModels {
     description: string;
     rating: number;
     quantity: number;
-
     categoryName: string;
     subcategoryName: string;
 
