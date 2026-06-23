@@ -38,7 +38,7 @@ export const routes: Routes = [
                 title: 'home page'
             },
             {
-                path: 'busca/**',
+                path: 'search/**',
                 component: Search,
                 title: 'jorge'
             }, 
