@@ -1,5 +1,13 @@
 <main class="px-16 py-12">
-  @if (product) {
+  @if (loading) {
+  <div class="flex min-h-[420px] items-center justify-center rounded-lg bg-[#FAF6F0] text-[#6F625B]">
+    Carregando produto...
+  </div>
+  } @else if (errorMessage) {
+  <div class="flex min-h-[420px] items-center justify-center rounded-lg bg-[#FAF6F0] text-[#6F625B]">
+    {{ errorMessage }}
+  </div>
+  } @else if (product) {
   <div class="flex items-start gap-12">
 
     <div class="flex flex-col gap-4">

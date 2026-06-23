@@ -10,9 +10,7 @@ export class AuthStore {
   isLogged = computed(() => this.token() !== null);
 
   constructor() {
-    if (typeof window !== 'undefined') {
-      this.token.set(localStorage.getItem('token'));
-    }
+    this.token.set(this.storage()?.getItem('token') ?? null);
   }
 
   id(): string | null {
@@ -28,13 +26,20 @@ export class AuthStore {
   }
 
   login(token: string) {
-    localStorage.setItem('token', token);
+    this.storage()?.setItem('token', token);
     this.token.set(token);
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.storage()?.removeItem('token');
     this.token.set(null);
   }
 
+  private storage(): Storage | null {
+    if (typeof window === 'undefined') return null;
+
+    return typeof window.localStorage?.getItem === 'function'
+      ? window.localStorage
+      : null;
+  }
 }

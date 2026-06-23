@@ -1,2 +1,11 @@
 
-<button><ng-icons class="tdesignHeartFilled"></ng-icons></button>
+<button
+  type="button"
+  class="grid h-10 w-10 place-items-center rounded-md border border-[#E7D8C7] bg-[#FFF9F4] text-[#FF5A00] transition hover:border-[#FF5A00] hover:bg-white disabled:opacity-60"
+  [disabled]="loading()"
+  [attr.aria-pressed]="isFavorite()"
+  [attr.aria-label]="isFavorite() ? 'Remover dos favoritos' : 'Adicionar aos favoritos'"
+  [title]="isFavorite() ? 'Remover dos favoritos' : 'Adicionar aos favoritos'"
+  (click)="toggleFavorite()">
+  <ng-icon [name]="isFavorite() ? 'tdesignHeartFilled' : 'tdesignHeart'"></ng-icon>
+</button>

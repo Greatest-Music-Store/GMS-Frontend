@@ -47,17 +47,12 @@ export class Favorite implements OnInit {
     console.log('Adicionar ao carrinho:', productId);
   }
 
-  removeFavorite(productId: string): void {
-    this.favoriteService.addFavorite(productId).subscribe({
-      next: () => {
-        this.favoriteProducts.update((products) =>
-          products.filter((product) => product.productId !== productId)
-        );
-      },
-      error: (error) => {
-        console.error('Erro ao remover favorito:', error);
-      },
-    });
+  onFavoriteChanged(productId: string, isFavorite: boolean): void {
+    if (isFavorite) return;
+
+    this.favoriteProducts.update((products) =>
+      products.filter((product) => product.productId !== productId)
+    );
   }
 
   trackByProductId(_: number, product: ProductModels): string {

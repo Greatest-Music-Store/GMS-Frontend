@@ -1,45 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { ProductModels } from '../../../models/product.model';
-import { ProductsService } from '../../../core/services/products/products';
-import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { ProductFilters, ProductsService } from '../../../core/services/products/products';
 import { FavoriteButton } from '../favorite-button/favorite-button';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-products-carrousel',
-  imports: [FavoriteButton],
+  imports: [ButtonModule, CarouselModule, FavoriteButton],
   templateUrl: './products-carrousel.html',
   styleUrl: './products-carrousel.css',
 })
-export class ProductsCarrousel {
+export class ProductsCarrousel implements OnInit {
 
-  product?: ProductModels;
+  @Input() filters: ProductFilters = {};
 
-  constructor(
-    private productService: ProductsService,
-    private routes: ActivatedRoute,
-    private titleService: Title,
-  ) {}
+  products = signal<ProductModels[]>([]);
+
+  responsiveOptions = [
+    {
+      breakpoint: '1199px',
+      numVisible: 2,
+      numScroll: 2,
+    },
+    {
+      breakpoint: '767px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
+
+  constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
-  const id = this.routes.snapshot.paramMap.get('id');
-
-  console.log('ID da URL:', id);
-
-  if (!id) return;
-
-  this.productService.getProductById(id).subscribe({
-    next: (product) => {
-      this.product = product;
-
-      this.titleService.setTitle(
-      `${product.name} | Greatest Music Store`
-    );
-    },
-    error: (error) => {
-      console.error(error);
-    }
-  });
-}
+    this.productService.getProducts(this.filters).subscribe({
+      next: (products) => {
+        this.products.set(products);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar produtos do carrossel:', error);
+        this.products.set([]);
+      }
+    });
+  }
 
   mainImage(product: ProductModels): string {
     return product.imageUrls?.[0] ?? '';
