@@ -11,7 +11,7 @@
     <div class="mt-8 grid gap-4">
       @for (product of favoriteProducts(); track trackByProductId($index, product)) {
       <article class="flex flex-col gap-4 rounded-lg bg-white p-4 shadow-sm sm:flex-row sm:items-center">
-        <a [href]="'/produto/' + product.productId"
+        <a [routerLink]="['/produto', product.productId]" [state]="{ product: product }"
           class="flex h-36 w-full shrink-0 items-center justify-center rounded-md bg-[#FFF9F4] sm:w-40">
           @if (mainImage(product)) {
           <img [src]="mainImage(product)" [alt]="product.name" class="max-h-28 w-full object-contain">
@@ -26,7 +26,7 @@
           <p class="font-[Montserrat] text-sm font-semibold text-[#7B5900]">
             {{ product.brand }}
           </p>
-          <a [href]="'/produto/' + product.productId"
+          <a [routerLink]="['/produto', product.productId]" [state]="{ product: product }"
             class="mt-1 line-clamp-2 font-[Montserrat] text-lg font-semibold text-[#42240D]">
             {{ product.name }}
           </a>

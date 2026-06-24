@@ -8,21 +8,26 @@ export class AuthStore {
   token = signal<string | null>(null);
 
   isLogged = computed(() => this.token() !== null);
+  userName = computed(() => {
+    const decoded = this.decodedToken();
+
+    return decoded?.['name']
+      ?? decoded?.['unique_name']
+      ?? decoded?.['given_name']
+      ?? decoded?.['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+      ?? null;
+  });
 
   constructor() {
     this.token.set(this.storage()?.getItem('token') ?? null);
   }
 
   id(): string | null {
-    const token = this.token();
+    const decoded = this.decodedToken();
 
-    if (!token) return null;
-
-    const decoded: any = jwtDecode(token);
-
-    return decoded[
+    return decoded?.[
       'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
-    ];
+    ] ?? null;
   }
 
   login(token: string) {
@@ -41,5 +46,17 @@ export class AuthStore {
     return typeof window.localStorage?.getItem === 'function'
       ? window.localStorage
       : null;
+  }
+
+  private decodedToken(): Record<string, string> | null {
+    const token = this.token();
+
+    if (!token) return null;
+
+    try {
+      return jwtDecode<Record<string, string>>(token);
+    } catch {
+      return null;
+    }
   }
 }

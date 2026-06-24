@@ -5,10 +5,11 @@ import { FavoriteService } from '../../core/services/favorite/favorite';
 import { ProductModels } from '../../models/product.model';
 import { FavoriteModel } from '../../models/favorite.model';
 import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-favorite',
-  imports: [NgIcon, FavoriteButton],
+  imports: [NgIcon, FavoriteButton, RouterLink],
   templateUrl: './favorite.html',
   viewProviders: [
     provideIcons({

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
 import { ProductsService } from '../../core/services/products/products';
 import { Product } from './product';
@@ -15,6 +16,7 @@ describe('Product', () => {
         {
           provide: ActivatedRoute,
           useValue: {
+            paramMap: of(convertToParamMap({})),
             snapshot: {
               paramMap: {
                 get: () => null,

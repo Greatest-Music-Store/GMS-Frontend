@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ProductModels } from '../../../models/product.model';
 import { API_CONFIG } from '../../api.config';
 
@@ -35,14 +35,35 @@ export class ProductsService {
       }
     });
 
-    return this.http.get<ProductModels[]>(this.apiUrl, { params });
+    return this.http.get(this.apiUrl, { params, responseType: 'text' }).pipe(
+      map((response) => this.parseResponse<ProductModels[]>(response, []))
+    );
   }
 
   getProductById(id: string): Observable<ProductModels> {
-    return this.http.get<ProductModels>(`${this.apiUrl}/${id}`);
+    return this.http.get(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
+      map((response) => this.parseResponse<ProductModels | null>(response, null)),
+      map((product) => {
+        if (!product) {
+          throw new Error('Produto não encontrado.');
+        }
+
+        return product;
+      })
+    );
   }
 
   getProductsSmall() {
     return Promise.resolve(this.getProductById);
+  }
+
+  private parseResponse<T>(response: string, fallback: T): T {
+    if (!response) return fallback;
+
+    try {
+      return JSON.parse(response) as T;
+    } catch {
+      return fallback;
+    }
   }
 }

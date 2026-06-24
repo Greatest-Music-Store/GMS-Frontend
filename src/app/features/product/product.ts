@@ -1,15 +1,19 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ProductModels } from '../../models/product.model';
 import { ProductsService } from '../../core/services/products/products';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { tdesignStarFilled } from '@ng-icons/tdesign-icons';
 import { NgIcon, provideIcons } from '@ng-icons/core';
+import { catchError, EMPTY, map, switchMap } from 'rxjs';
+import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
+import { CartButton } from '../../shared/components/cart-button/cart-button';
+import { ProductsCarrousel } from '../../shared/components/products-carrousel/products-carrousel';
+import { ProductFilters } from '../../core/services/products/products';
 
 @Component({
   selector: 'app-product',
-  imports: [NgIcon],
+  imports: [NgIcon, FavoriteButton, CartButton, ProductsCarrousel],
   templateUrl: './product.html',
   styleUrl: './product.css',
   viewProviders: [provideIcons({ tdesignStarFilled})]
@@ -17,50 +21,91 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 export class Product implements OnInit{
 
   product?: ProductModels;
-  loading = true;
-  errorMessage = '';
+  routeProductId = '';
+  relatedProductFilters: ProductFilters = {};
 
   constructor(
     private productService: ProductsService,
     private routes: ActivatedRoute,
+    private router: Router,
     private titleService: Title,
-    @Inject(PLATFORM_ID) private platformId: object,
   ) {}
 
   ngOnInit(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
+    this.routes.paramMap.pipe(
+      switchMap((params) => {
+        const id = params.get('id');
 
-    const id = this.routes.snapshot.paramMap.get('id');
+        this.routeProductId = id ?? '';
 
-    console.log('ID da URL:', id);
+        if (!id) {
+          return EMPTY;
+        }
 
-    if (!id) {
-      this.loading = false;
-      this.errorMessage = 'Produto não encontrado.';
-      return;
-    }
+        const stateProduct = this.getNavigationProduct();
 
-    this.productService.getProductById(id).subscribe({
+        if (stateProduct?.productId === id) {
+          this.setProduct(stateProduct);
+        }
+
+        return this.loadProduct(id);
+      })
+    ).subscribe({
       next: (product) => {
-        setTimeout(() => {
-          this.product = product;
-          this.loading = false;
-
-          this.titleService.setTitle(
-            `${product.name} | Greatest Music Store`
-          );
-        });
-      },
-      error: (error) => {
-        console.error(error);
-        this.loading = false;
-        this.errorMessage = 'Não foi possível carregar este produto.';
+        this.setProduct(product);
       }
     });
   }
 
   mainImage(product: ProductModels): string {
     return product.imageUrls?.[0] ?? '';
+  }
+
+  private categoryFilters(product: ProductModels): ProductFilters {
+    if (product.categoryID) {
+      return { CategoryId: product.categoryID };
+    }
+
+    if (product.categoryName) {
+      return { CategoryName: product.categoryName };
+    }
+
+    return {};
+  }
+
+  private setProduct(product: ProductModels): void {
+    this.product = product;
+    this.relatedProductFilters = this.categoryFilters(product);
+
+    this.titleService.setTitle(
+      `${product.name} | Greatest Music Store`
+    );
+  }
+
+  private loadProduct(id: string) {
+    return this.productService.getProductById(id).pipe(
+      catchError((error) => {
+        console.error('Erro ao buscar produto por id, tentando lista:', error);
+
+        return this.productService.getProducts().pipe(
+          map((products) => products.find((product) => product.productId === id)),
+          switchMap((product) => product ? [product] : EMPTY),
+          catchError((listError) => {
+            console.error('Erro ao buscar produto pela lista:', listError);
+            return EMPTY;
+          })
+        );
+      })
+    );
+  }
+
+  private getNavigationProduct(): ProductModels | undefined {
+    const currentProduct = this.router.getCurrentNavigation()?.extras.state?.['product'] as ProductModels | undefined;
+    const historyProduct = typeof history !== 'undefined'
+      ? history.state?.['product'] as ProductModels | undefined
+      : undefined;
+
+    return currentProduct ?? historyProduct;
   }
 
   

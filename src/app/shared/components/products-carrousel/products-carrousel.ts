@@ -1,16 +1,17 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, signal } from '@angular/core';
 import { ProductModels } from '../../../models/product.model';
 import { ProductFilters, ProductsService } from '../../../core/services/products/products';
 import { FavoriteButton } from '../favorite-button/favorite-button';
 import { CarouselModule } from 'primeng/carousel';
-import { ButtonModule } from 'primeng/button';
+import { RouterLink } from '@angular/router';
+import { CartButton } from '../cart-button/cart-button';
 @Component({
   selector: 'app-products-carrousel',
-  imports: [ButtonModule, CarouselModule, FavoriteButton],
+  imports: [CarouselModule, FavoriteButton, RouterLink, CartButton],
   templateUrl: './products-carrousel.html',
   styleUrl: './products-carrousel.css',
 })
-export class ProductsCarrousel implements OnInit {
+export class ProductsCarrousel implements OnInit, OnChanges {
 
   @Input() filters: ProductFilters = {};
 
@@ -32,6 +33,16 @@ export class ProductsCarrousel implements OnInit {
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['filters'] && !changes['filters'].firstChange) {
+      this.loadProducts();
+    }
+  }
+
+  private loadProducts(): void {
     this.productService.getProducts(this.filters).subscribe({
       next: (products) => {
         this.products.set(products);

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { CartModel } from '../../models/cart.model';
 import { CartService } from '../../core/services/cart/cart';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -61,5 +62,27 @@ export class Cart implements OnInit {
         console.error('Erro ao adicionar quantidade:', err);
       }
     });
+  }
+
+  decreaseQuantity(item: CartModel): void {
+    if (item.quantity <= 1) {
+      this.remove(item.productId);
+      return;
+    }
+
+    this.cartItemService.removeFromCart(item.productId).pipe(
+      switchMap(() => this.cartItemService.addToCart(item.productId, item.quantity - 1))
+    ).subscribe({
+      next: () => {
+        this.loadCart();
+      },
+      error: (err) => {
+        console.error('Erro ao reduzir quantidade:', err);
+      }
+    });
+  }
+
+  mainImage(item: CartModel): string {
+    return item.imageUrls?.[0] ?? '';
   }
 }
