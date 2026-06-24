@@ -9,8 +9,7 @@ interface CarouselSlide {
 
 @Component({
   selector: 'docs-carousel03',
-  templateUrl: './carousel03.html',
-  styleUrl: './carousel.css', 
+  templateUrl: './carousel03.html', 
   standalone: true,
   imports: [
   ],

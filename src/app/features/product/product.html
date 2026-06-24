@@ -1,44 +1,77 @@
-<main class="px-16 py-12">
-  @if (loading) {
-  <div class="flex min-h-[420px] items-center justify-center rounded-lg bg-[#FAF6F0] text-[#6F625B]">
-    Carregando produto...
-  </div>
-  } @else if (errorMessage) {
-  <div class="flex min-h-[420px] items-center justify-center rounded-lg bg-[#FAF6F0] text-[#6F625B]">
-    {{ errorMessage }}
-  </div>
-  } @else if (product) {
-  <div class="flex items-start gap-12">
-
+<main class="px-4 py-8 sm:px-8 lg:px-16 lg:py-12">
+  @if (product) {
+  <section class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-12">
     <div class="flex flex-col gap-4">
       @if (mainImage(product)) {
-      <img [src]="mainImage(product)" [alt]="product.name" class="w-[1000px] h-[1000px] object-cover">
+      <img
+        [src]="mainImage(product)"
+        [alt]="product.name"
+        class="aspect-square w-full rounded-lg bg-[#FFF9F4] object-contain">
       } @else {
       <div
-        class="flex h-[600px] w-[600px] items-center justify-center bg-[#FFF9F4] font-[Montserrat] text-lg font-semibold text-[#7B5900]">
+        class="flex aspect-square w-full items-center justify-center rounded-lg bg-[#FFF9F4] font-[Montserrat] text-lg font-semibold text-[#7B5900]">
         imagem
       </div>
       }
-      <div class="items-center">
-        <div class="flex items-center gap-3">
-          @for (imageUrl of product.imageUrls; track imageUrl) {
-          <img [src]="imageUrl" [alt]="product.name" class="w-[240px] h-[240px] object-cover">
-          }
-        </div>
+
+      @if ((product.imageUrls?.length ?? 0) > 1) {
+      <div class="flex items-center gap-3 overflow-x-auto">
+        @for (imageUrl of product.imageUrls ?? []; track imageUrl) {
+        <img
+          [src]="imageUrl"
+          [alt]="product.name"
+          class="h-24 w-24 shrink-0 rounded-md bg-[#FFF9F4] object-cover sm:h-32 sm:w-32">
+        }
       </div>
+      }
     </div>
-    <div class="flex flex-col gap-2 text-black">
-      <p class="text-[#7B5900] font-thin tracking-wider font-[Montserrat]">{{ product.brand }}</p>
-      <h1 class="text-5xl text-[#42240D] font-bold font-[Playfair_Display]">
+
+    <div class="flex flex-col gap-4 text-black">
+      <p class="font-[Montserrat] text-sm font-semibold uppercase tracking-wide text-[#7B5900]">
+        {{ product.brand }}
+      </p>
+
+      <h1 class="font-[Playfair_Display] text-4xl font-bold text-[#42240D] lg:text-5xl">
         {{ product.name }}
       </h1>
-      <div class="flex items-center">
+
+      <div class="flex items-center gap-1">
         <ng-icon name="tdesignStarFilled" color="#FCCA66"></ng-icon>
-        <h2>{{ product.rating }}</h2>
+        <h2 class="font-[Montserrat] text-[#42240D]">{{ product.rating || 'N/A' }}</h2>
       </div>
 
-    </div>
+      <p class="font-[Montserrat] text-3xl font-extrabold text-[#FF5A00]">
+        {{ 'R$ ' + product.price }}
+      </p>
 
-  </div>
+      @if (product.description) {
+      <p class="font-[Montserrat] leading-7 text-[#6F625B]">
+        {{ product.description }}
+      </p>
+      }
+
+      <div class="flex items-center gap-3">
+        <app-cart-button [productId]="product.productId"></app-cart-button>
+        <app-favorite-button [productId]="product.productId"></app-favorite-button>
+      </div>
+
+      <div class="grid gap-2 border-t border-[#E7D8C7] pt-4 font-[Montserrat] text-sm text-[#6F625B]">
+        @if (product.categoryName) {
+        <p>Categoria: {{ product.categoryName }}</p>
+        }
+        @if (product.subcategoryName) {
+        <p>Subcategoria: {{ product.subcategoryName }}</p>
+        }
+        <p>Estoque: {{ product.quantity }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12 border-t border-[#E7D8C7] pt-8">
+    <h2 class="px-4 font-[Playfair_Display] text-3xl font-bold text-[#42240D] sm:px-8 lg:px-16">
+      Produtos da mesma categoria
+    </h2>
+    <app-products-carrousel [filters]="relatedProductFilters"></app-products-carrousel>
+  </section>
   }
 </main>

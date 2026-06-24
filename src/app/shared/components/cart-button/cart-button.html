@@ -1,0 +1,36 @@
+<button
+  type="button"
+  class="grid h-10 w-10 place-items-center rounded-md border border-[#42240D] bg-[#42240D] text-white transition hover:border-[#FF5A00] hover:bg-[#FF5A00] disabled:opacity-60"
+  [disabled]="loading()"
+  [attr.aria-label]="added() ? 'Produto adicionado ao carrinho' : 'Adicionar ao carrinho'"
+  [title]="added() ? 'Produto adicionado ao carrinho' : 'Adicionar ao carrinho'"
+  (click)="addToCart()">
+  <ng-icon name="tdesignCartAdd"></ng-icon>
+</button>
+
+@if (added()) {
+<div class="fixed inset-0 z-50 grid place-items-center bg-black/40 px-4">
+  <div class="w-full max-w-sm rounded-lg border border-[#E7D8C7] bg-white p-6 text-center shadow-xl">
+    <p class="font-[Playfair_Display] text-2xl font-bold text-[#42240D]">
+      Produto adicionado
+    </p>
+    <p class="mt-2 font-[Montserrat] text-sm text-[#6F625B]">
+      Produto adicionado ao carrinho.
+    </p>
+
+    <div class="mt-5 grid gap-3">
+      <a
+        routerLink="/cart"
+        class="rounded-md bg-[#42240D] px-4 py-3 text-center font-[Montserrat] text-sm font-semibold text-white transition hover:bg-[#5A3214]">
+        Ir para o carrinho
+      </a>
+      <button
+        type="button"
+        class="rounded-md border border-[#E7D8C7] px-4 py-3 font-[Montserrat] text-sm font-semibold text-[#42240D] transition hover:bg-[#FFF9F4]"
+        (click)="continueShopping()">
+        Continuar comprando
+      </button>
+    </div>
+  </div>
+</div>
+}
