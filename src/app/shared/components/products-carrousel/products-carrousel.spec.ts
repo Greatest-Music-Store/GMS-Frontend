@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { ProductsService } from '../../../core/services/products/products';
-import { Home } from './home';
+import { ProductsCarrousel } from './products-carrousel';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('ProductsCarrousel', () => {
+  let component: ProductsCarrousel;
+  let fixture: ComponentFixture<ProductsCarrousel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home],
+      imports: [ProductsCarrousel],
       providers: [
         {
           provide: ProductsService,
@@ -21,7 +21,7 @@ describe('Home', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(ProductsCarrousel);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

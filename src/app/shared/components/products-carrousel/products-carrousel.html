@@ -1,0 +1,50 @@
+<section class="w-full px-4 py-8 sm:px-8 lg:px-16">
+    <p-carousel
+        [value]="products()"
+        [numVisible]="3"
+        [numScroll]="3"
+        [circular]="true"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template let-product #item>
+            <article class="mx-2 flex h-[420px] flex-col rounded-lg border border-[#E7D8C7] bg-white p-4 shadow-sm">
+                <a
+                    [href]="'/produto/' + product.productId"
+                    class="flex h-56 w-full shrink-0 items-center justify-center rounded-md bg-[#FFF9F4]">
+                    @if (mainImage(product)) {
+                    <img
+                        [src]="mainImage(product)"
+                        [alt]="product.name"
+                        class="h-48 w-full object-contain" />
+                    } @else {
+                    <span class="px-4 text-center font-[Montserrat] text-sm font-semibold text-[#7B5900]">
+                        imagem
+                    </span>
+                    }
+                </a>
+
+                <div class="mt-4 flex min-h-0 flex-1 flex-col">
+                    <p class="font-[Montserrat] text-sm font-semibold uppercase tracking-wide text-[#7B5900]">
+                        {{ product.brand }}
+                    </p>
+                    <a
+                        [href]="'/produto/' + product.productId"
+                        class="mt-1 line-clamp-2 min-h-[56px] font-[Montserrat] text-base font-semibold text-[#42240D]">
+                        {{ product.name }}
+                    </a>
+
+                    <div class="mt-auto flex items-center justify-between gap-3 pt-4">
+                        <p class="font-[Montserrat] text-xl font-extrabold text-[#FF5A00]">
+                            {{ 'R$' +product.price }}
+                        </p>
+                        <div class="flex shrink-0 items-center gap-2">
+                            <app-favorite-button [productId]="product.productId"></app-favorite-button>
+                            <p-button
+                                icon="pi pi-shopping-cart"
+                                styleClass="!grid !h-10 !w-10 !place-items-center !rounded-md !border-[#42240D] !bg-[#42240D] !p-0 !text-white hover:!border-[#FF5A00] hover:!bg-[#FF5A00]" />
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </ng-template>
+    </p-carousel>
+</section>

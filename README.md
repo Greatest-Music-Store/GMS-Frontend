@@ -40,3 +40,44 @@ fav
 carrinho 
 
 checkout
+
+
+
+
+
+
+
+
+Homepage{
+    header[
+        categorias
+        search
+        login/conta
+        carrinho =>{
+            se nao estiver logado vai para tela de login
+        }
+    ]
+    carrousel de produtos
+    carrousel de "marcas"
+    carrousel de categorias
+
+   footer[
+    links 
+    cnpj
+    e essas coisas.
+   ]
+}
+
+
+product page{
+    foto do produto 
+    descricao 
+    marca
+    preco
+    
+    feedbacks[
+        estrelas
+        comentarios
+    ]
+    carrousel de produto
+}

@@ -1,13 +1,22 @@
 <main class="px-16 py-12">
-  @if (product) {
+  @if (loading) {
+  <div class="flex min-h-[420px] items-center justify-center rounded-lg bg-[#FAF6F0] text-[#6F625B]">
+    Carregando produto...
+  </div>
+  } @else if (errorMessage) {
+  <div class="flex min-h-[420px] items-center justify-center rounded-lg bg-[#FAF6F0] text-[#6F625B]">
+    {{ errorMessage }}
+  </div>
+  } @else if (product) {
   <div class="flex items-start gap-12">
 
     <div class="flex flex-col gap-4">
       @if (mainImage(product)) {
       <img [src]="mainImage(product)" [alt]="product.name" class="w-[1000px] h-[1000px] object-cover">
       } @else {
-      <div class="flex h-[600px] w-[600px] items-center justify-center bg-[#FFF9F4] font-[Montserrat] text-lg font-semibold text-[#7B5900]">
-       imagem
+      <div
+        class="flex h-[600px] w-[600px] items-center justify-center bg-[#FFF9F4] font-[Montserrat] text-lg font-semibold text-[#7B5900]">
+        imagem
       </div>
       }
       <div class="items-center">
@@ -27,7 +36,7 @@
         <ng-icon name="tdesignStarFilled" color="#FCCA66"></ng-icon>
         <h2>{{ product.rating }}</h2>
       </div>
-      
+
     </div>
 
   </div>
