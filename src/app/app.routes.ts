@@ -35,12 +35,12 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: Home,
-                title: 'home page'
+                title: 'Home'
             },
             {
                 path: 'search/**',
                 component: Search,
-                title: 'jorge'
+                title: 'Search'
             }, 
             {
                 path: '',
@@ -58,12 +58,12 @@ export const routes: Routes = [
             },
             {
                 path: 'checkout',
-                title: 'finalizar',
+                title: 'Finalizar',
                 component: Checkout
             },
             {
                 path:'favorite',
-                title: 'favoritos',
+                title: 'Favoritos',
                 component: Favorite
             },
             {

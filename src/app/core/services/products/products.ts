@@ -63,7 +63,7 @@ export class ProductsService {
     );
   }
 
-  searchProducts(filters: any) {
+  searchProducts(filters: any, search: string) {
     let params = new HttpParams();
 
     if (filters.minPrice != null)
@@ -77,6 +77,9 @@ export class ProductsService {
     }
     if (filters.category != null)
       params = params.set('categoryName', filters.category);
+
+    if (search != null)
+      params = params.set('search', search);
 
     return this.http.get<ProductModels[]>(
       `${API_CONFIG.baseUrl}/api/product`,

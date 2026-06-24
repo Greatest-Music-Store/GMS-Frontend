@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { Carousel03 } from '../components/carousel03/carousel03';
 import { ProductsCarrousel } from '../../../shared/components/products-carrousel/products-carrousel';
 import { AlignDirective, AlertLinkDirective } from "@coreui/angular";
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-home',
-  imports: [Carousel03, ProductsCarrousel, AlignDirective, AlertLinkDirective],
+  imports: [Carousel03, ProductsCarrousel, AlignDirective, AlertLinkDirective, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

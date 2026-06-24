@@ -127,7 +127,7 @@
                                 R$ {{ product.price }}
                             </span>
 
-                            <a [href]="'/produto/' + product.productId">
+                            <a [routerLink]="['/produto', product.productId]" [state]="{ product: product }">
                                 <button class="text-[#42240D] font-medium cursor-pointer hover:bg-[#ffd0b8] p-1 rounded">
                                     Ver detalhes →
                                 </button>

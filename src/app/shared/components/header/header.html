@@ -5,19 +5,34 @@
     </a>
 
     <nav class="flex items-center gap-4 overflow-x-auto font-[Montserrat] text-sm font-semibold text-[#50443D] lg:text-base">
-      <a routerLink="/busca" class="transition hover:text-[#FF5A00]">Sopros</a>
-      <a routerLink="/busca" class="transition hover:text-[#FF5A00]">Cordas</a>
-      <a routerLink="/busca" class="transition hover:text-[#FF5A00]">Percussão</a>
-      <a routerLink="/busca" class="transition hover:text-[#FF5A00]">Teclas</a>
-      <a routerLink="/busca" class="transition hover:text-[#FF5A00]">Discos</a>
-      <a routerLink="/busca" class="transition hover:text-[#FF5A00]">Mais...</a>
+      <a routerLink="/search" [queryParams]="{ category: 'Sopros' }" class="transition hover:text-[#FF5A00]">Sopros</a>
+      <a routerLink="/search" [queryParams]="{ category: 'Cordas' }" class="transition hover:text-[#FF5A00]">Cordas</a>
+      <a routerLink="/search" [queryParams]="{ category: 'Percussão' }" class="transition hover:text-[#FF5A00]">Percussão</a>
+      <a routerLink="/search" [queryParams]="{ category: 'Teclas' }" class="transition hover:text-[#FF5A00]">Teclas</a>
+      <a routerLink="/search" [queryParams]="{ category: 'Discos' }" class="transition hover:text-[#FF5A00]">Discos</a>
+      <a routerLink="/search" >Mais...</a>
     </nav>
 
-    <div class="min-w-0 flex-1">
+    <div class="relative min-w-0 flex-1">
       <input
         type="text"
         placeholder="Buscar produtos"
+        [formControl]="searchControl"
+        (keydown.enter)="search()"
         class="w-full rounded-md border border-[#E7D8C7] bg-[#FFF1EA] px-4 py-2 text-[#50443D] outline-none transition focus:border-[#FF5A00]">
+
+      <!-- @if (suggestions.length > 0) {
+        <div class="absolute top-full left-0 right-0 text-black bg-white border rounded-md shadow-lg z-50">
+          @for (product of suggestions; track product.productId) {
+            <button
+              type="button"
+              class="w-full text-left px-4 py-2 hover:bg-gray-100"
+              (click)="selectSuggestion(product)">
+              {{ product.name }}
+            </button>
+          }
+        </div>
+      } -->
     </div>
 
     <nav class="flex shrink-0 items-center gap-4 text-[#50443D]">

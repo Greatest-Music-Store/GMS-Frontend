@@ -4,9 +4,12 @@ import { ProductsService } from '../../../../core/services/products/products';
 import { ɵInternalFormsSharedModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import { FavoriteButton } from '../../../../shared/components/favorite-button/favorite-button';
+import { RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-search',
-  imports: [ɵInternalFormsSharedModule, FormsModule, FavoriteButton],
+  imports: [ɵInternalFormsSharedModule, FormsModule, FavoriteButton, RouterLink],
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
@@ -16,34 +19,29 @@ export class Search {
   minPrice: number | null = null;
   maxPrice: number | null = null;
   category: string | null = null;
+  searchTerm: string | null = null;
   resetKey = 0;
 
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.applyFilters();
-  }
-  
-  private loadProducts(): void {
-    this.productService.getAllProducts().subscribe({
-      next: (products) => {
-        this.products.set(products);
-        this.loaded.set(true);
-      },
-      error: (err) => {
-        console.error('Erro ao carregar produtos:', err);
-        this.products.set([]);
-        this.loaded.set(true);
-      }
+    this.route.queryParams.subscribe(params => {
+      this.category = params['category'] ?? null;
+      this.searchTerm = params['search'] ?? null;
+      console.log(this.searchTerm);
+      this.applyFilters();
     });
   }
 
   applyFilters(): void {
-    this.productService.searchProducts({
-      category: this.category,
-      minPrice: this.minPrice,
-      maxPrice: this.maxPrice,
-    }).subscribe({
+    this.productService.searchProducts(
+      {
+        category: this.category,
+        minPrice: this.minPrice,
+        maxPrice: this.maxPrice
+      },
+      this.searchTerm ?? ''
+    ).subscribe({
       next: (res) => this.products.set(res),
       error: console.error
     });
@@ -63,12 +61,13 @@ export class Search {
     this.category = null;
     this.minPrice = null;
     this.maxPrice = null;
+    this.searchTerm = null;
 
     this.productService.searchProducts({
       category: null,
       minPrice: null,
       maxPrice: null,
-    }).subscribe({
+    }, '').subscribe({
       next: (res) => this.products.set(res),
       error: console.error
     });
