@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { CartModel } from '../../models/cart.model';
 import { CartService } from '../../core/services/cart/cart';
-import { switchMap } from 'rxjs';
+import { switchMap, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +21,7 @@ export class Cart implements OnInit {
     )
   );
 
-  constructor(private cartItemService: CartService) {}
+  constructor(private cartItemService: CartService) { }
 
   ngOnInit(): void {
     this.loadCart();
@@ -84,5 +84,16 @@ export class Cart implements OnInit {
 
   mainImage(item: CartModel): string {
     return item.imageUrls?.[0] ?? '';
+  }
+
+
+  finalizarCompra() {
+    const requests = this.cartItems().map(item =>
+      this.cartItemService.removeFromCart(item.productId)
+    );
+
+    forkJoin(requests).subscribe(() => {
+      this.cartItems.set([]);
+    });
   }
 }

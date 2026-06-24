@@ -15,23 +15,5 @@ interface CarouselSlide {
   ],
   providers: [{ provide: CarouselConfig, useClass: CarouselCustomConfig }]
 })
-export class Carousel03 implements OnInit {
-  slides: CarouselSlide[] = [];
-
-  ngOnInit(): void {
-    this.slides = [
-      {
-        src: 'https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/Goat.jpeg',
-        alt: 'Evento Goat'
-      },
-      {
-        src: 'https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/Mega%20Mayo.jpeg',
-        alt: 'Evento Mega Mayo'
-      },
-      {
-        src: 'https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/Mega%20Mayo.jpeg',
-        alt: 'Evento Mega Mayo'
-      }
-    ];
-  }
+export class Carousel03  {
 }

@@ -76,13 +76,13 @@
             Preço unitário
           </p>
 
-          <p class="font-[Montserrat] text-2xl font-extrabold text-[#FF5A00]">
+          <p class="font-[Montserrat] text-2xl font-extrabold text-[#42240D]">
             R$ {{ item.price | number:'1.2-2' }}
           </p>
 
         </div>
 
-        <div class="flex flex-col gap-4 rounded-md bg-[#FFF9F4] p-4">
+        <div class="flex flex-col gap-4 rounded-md  p-4">
           <div>
             <p class="font-[Montserrat] text-sm font-semibold text-[#7B5900]">
               Quantidade
@@ -124,7 +124,7 @@
 
           <button
             type="button"
-            class="h-10 rounded-md bg-[#FF5A00] px-4 font-[Montserrat] text-sm font-semibold text-white transition hover:bg-[#d94d00]"
+            class="h-10 rounded-md bg-[#42240D] px-4 font-[Montserrat] text-sm font-semibold text-white transition hover:bg-[#d94d00]"
             (click)="remove(item.productId)"
             title="Remover produto">
             Remover
@@ -146,15 +146,17 @@
           Total
         </h2>
 
-        <span class="text-3xl font-extrabold text-[#FF5A00]">
+        <span class="text-3xl font-extrabold text-[#42240D]">
           R$ {{ total() | number:'1.2-2' }}
         </span>
 
       </div>
 
       <button
+         (click)="finalizarCompra()"
+        [routerLink]="['/checkout']"
         class="mt-6 w-full rounded-lg bg-[#42240D] py-4 font-semibold text-white transition hover:bg-[#5A3214]">
-
+       
         Finalizar Compra
 
       </button>
