@@ -91,7 +91,7 @@
             <div class="mt-2 grid grid-cols-[44px_1fr_44px] items-center overflow-hidden rounded-md border border-[#E7D8C7] bg-white">
               <button
                 type="button"
-                class="grid h-11 place-items-center text-xl font-bold text-[#42240D] transition hover:bg-[#FAF6F0]"
+                class="grid cursor-pointer h-11 place-items-center text-xl font-bold text-[#42240D] transition hover:bg-[#FAF6F0]"
                 (click)="decreaseQuantity(item)"
                 title="Diminuir quantidade"
                 aria-label="Diminuir quantidade">
@@ -104,7 +104,7 @@
 
               <button
                 type="button"
-                class="grid h-11 place-items-center text-xl font-bold text-[#42240D] transition hover:bg-[#FAF6F0]"
+                class="grid cursor-pointer h-11 place-items-center text-xl font-bold text-[#42240D] transition hover:bg-[#FAF6F0]"
                 (click)="increaseQuantity(item.productId)"
                 title="Adicionar quantidade"
                 aria-label="Adicionar quantidade">
@@ -124,7 +124,7 @@
 
           <button
             type="button"
-            class="h-10 rounded-md bg-[#42240D] px-4 font-[Montserrat] text-sm font-semibold text-white transition hover:bg-[#d94d00]"
+            class="h-10 cursor-pointer rounded-md bg-[#42240D] px-4 font-[Montserrat] text-sm font-semibold text-white transition hover:bg-[#d94d00]"
             (click)="remove(item.productId)"
             title="Remover produto">
             Remover
@@ -155,7 +155,7 @@
       <button
          (click)="finalizarCompra()"
         [routerLink]="['/checkout']"
-        class="mt-6 w-full rounded-lg bg-[#42240D] py-4 font-semibold text-white transition hover:bg-[#5A3214]">
+        class="mt-6 w-full cursor-pointer rounded-lg bg-[#42240D] py-4 font-semibold text-white transition hover:bg-[#5A3214]">
        
         Finalizar Compra
 

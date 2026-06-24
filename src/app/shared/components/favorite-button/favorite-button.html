@@ -1,7 +1,7 @@
 
 <button
   type="button"
-  class="grid h-10 w-10 place-items-center rounded-md border border-[#E7D8C7] bg-[#FFF9F4] text-[#FF5A00] transition hover:border-[#FF5A00] hover:bg-white disabled:opacity-60"
+  class="grid h-10 w-10 cursor-pointer place-items-center rounded-md border border-[#E7D8C7] bg-[#FFF9F4] text-[#FF5A00] transition hover:border-[#FF5A00] hover:bg-white disabled:opacity-60"
   [disabled]="loading()"
   [attr.aria-pressed]="isFavorite()"
   [attr.aria-label]="isFavorite() ? 'Remover dos favoritos' : 'Adicionar aos favoritos'"
@@ -9,3 +9,36 @@
   (click)="toggleFavorite()">
   <ng-icon [name]="isFavorite() ? 'tdesignHeartFilled' : 'tdesignHeart'"></ng-icon>
 </button>
+
+@if (showLoginPopup()) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+
+    <div class="bg-white p-6 rounded-xl shadow-lg w-80 text-center">
+
+      <h2 class="text-lg font-semibold text-[#42240D]">
+        Faça login para favoritar
+      </h2>
+
+      <p class="text-sm text-gray-600 mt-2">
+        Você precisa estar logado para salvar produtos nos favoritos.
+      </p>
+
+      <div class="flex justify-between mt-4 gap-2">
+
+        <button
+          class="flex-1 cursor-pointer bg-gray-200 rounded p-2"
+          (click)="showLoginPopup.set(false)">
+          Cancelar
+        </button>
+
+        <a
+          routerLink="/login"
+          class="flex-1 cursor-pointer bg-[#FF5A00] text-white rounded p-2 text-center">
+          Login
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+}

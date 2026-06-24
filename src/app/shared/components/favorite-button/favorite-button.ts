@@ -2,9 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { tdesignHeart, tdesignHeartFilled } from '@ng-icons/tdesign-icons';
 import { FavoriteService } from '../../../core/services/favorite/favorite';
+import { AuthStore } from '../../../core/stores/auth.store';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-favorite-button',
-  imports: [NgIcon],
+  imports: [NgIcon, RouterLink],
   viewProviders: [provideIcons({tdesignHeart, tdesignHeartFilled})],
   templateUrl: './favorite-button.html',
   styleUrl: './favorite-button.css',
@@ -16,8 +18,9 @@ export class FavoriteButton implements OnInit {
 
   isFavorite = signal(false);
   loading = signal(false);
+  showLoginPopup = signal(false);
 
-  constructor(private favoriteService: FavoriteService){}
+  constructor(private favoriteService: FavoriteService, private authStore: AuthStore){}
 
   ngOnInit(): void {
     this.isFavorite.set(this.initialFavorite);
@@ -36,6 +39,11 @@ export class FavoriteButton implements OnInit {
 
   toggleFavorite(): void {
     if (!this.productId || this.loading()) return;
+
+    if (!this.authStore.isLogged()) {
+      this.showLoginPopup.set(true);
+      return;
+    }
 
     this.loading.set(true);
 

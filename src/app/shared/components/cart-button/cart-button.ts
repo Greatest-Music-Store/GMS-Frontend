@@ -4,6 +4,7 @@ import { tdesignCartAdd } from '@ng-icons/tdesign-icons';
 import { CartService } from '../../../core/services/cart/cart';
 import { CartModel } from '../../../models/cart.model';
 import { RouterLink } from '@angular/router';
+import { AuthStore } from '../../../core/stores/auth.store';
 
 @Component({
   selector: 'app-cart-button',
@@ -19,11 +20,17 @@ export class CartButton {
 
   loading = signal(false);
   added = signal(false);
+  showLoginPopup = signal(false);
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private authStore: AuthStore) {}
 
   addToCart(): void {
     if (!this.productId || this.loading()) return;
+
+    if (!this.authStore.isLogged()) {
+      this.showLoginPopup.set(true);
+      return;
+    }
 
     this.loading.set(true);
 
