@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProductModels } from '../../../models/product.model';
 import { API_CONFIG } from '../../api.config';
@@ -45,11 +44,7 @@ export class ProductsService {
 
   getProductsSmall() {
     return Promise.resolve(this.getProductById);
-  }
-    return this.http.get<ProductModels>(
-      `${API_CONFIG.baseUrl}/api/product/${id}`
-    );
-  }
+  }  
 
   getAllProducts(): Observable<ProductModels[]> {
     return this.http.get<ProductModels[]>(
