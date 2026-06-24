@@ -6,10 +6,12 @@ import { ProductModels } from '../../models/product.model';
 import { FavoriteModel } from '../../models/favorite.model';
 import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
 import { RouterLink } from '@angular/router';
+import { CartButton } from '../../shared/components/cart-button/cart-button';
+
 
 @Component({
   selector: 'app-favorite',
-  imports: [NgIcon, FavoriteButton, RouterLink],
+  imports: [NgIcon, FavoriteButton, RouterLink, CartButton],
   templateUrl: './favorite.html',
   viewProviders: [
     provideIcons({
@@ -42,10 +44,6 @@ export class Favorite implements OnInit {
         this.loaded.set(true);
       },
     });
-  }
-
-  addToCart(productId: string): void {
-    console.log('Adicionar ao carrinho:', productId);
   }
 
   onFavoriteChanged(productId: string, isFavorite: boolean): void {

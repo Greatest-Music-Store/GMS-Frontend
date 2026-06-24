@@ -5,7 +5,12 @@
 @plugin "daisyui" {
   themes: all;
 }
+
 :root {
   background: #FFF8F5;
+  
 
+}
+.p-carousel-indicator-active .p-carousel-indicator-button {
+  background: #f0b100 !important;
 }

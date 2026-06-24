@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { tdesignCart, tdesignHeart } from '@ng-icons/tdesign-icons';
+import { tdesignCart, tdesignHeart, tdesignUserCircle } from '@ng-icons/tdesign-icons';
 import { RouterLink } from '@angular/router';
 import { AuthStore } from '../../../core/stores/auth.store';
 
@@ -11,8 +11,7 @@ import { AuthStore } from '../../../core/stores/auth.store';
   selector: 'app-header',
   imports: [NgIcon, RouterLink],
   templateUrl: './header.html',
-  styleUrl: './header.css',
-  viewProviders: [provideIcons({ tdesignHeart, tdesignCart })],
+  viewProviders: [provideIcons({ tdesignHeart, tdesignCart, tdesignUserCircle})],
 })
 export class Header {
   userMenuOpen = signal(false);
