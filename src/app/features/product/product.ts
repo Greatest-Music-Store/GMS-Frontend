@@ -9,7 +9,8 @@ import { catchError, EMPTY, map, switchMap } from 'rxjs';
 import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
 import { CartButton } from '../../shared/components/cart-button/cart-button';
 import { ProductsCarrousel } from '../../shared/components/products-carrousel/products-carrousel';
-import { ProductFilters } from '../../core/services/products/products';
+import { ProductFilters } from '../../models/product.model';
+
 
 @Component({
   selector: 'app-product',

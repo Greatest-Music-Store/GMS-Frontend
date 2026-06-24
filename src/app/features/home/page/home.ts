@@ -3,8 +3,8 @@ import { Carousel03 } from '../components/carousel03/carousel03';
 import { ProductsCarrousel } from '../../../shared/components/products-carrousel/products-carrousel';
 import { AlignDirective, AlertLinkDirective } from "@coreui/angular";
 import { RouterLink } from '@angular/router';
-import { ProductFilters } from '../../../core/services/products/products';
-import { ProductModels } from '../../../models/product.model';
+
+import { ProductModels, ProductFilters } from '../../../models/product.model';
 @Component({
   selector: 'app-home',
   imports: [Carousel03, ProductsCarrousel, AlignDirective, AlertLinkDirective, RouterLink],
