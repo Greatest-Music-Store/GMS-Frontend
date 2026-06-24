@@ -82,11 +82,17 @@
             </div>
         </aside>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ml-12 flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ml-12 flex-1">
 
             @for (product of products(); track product.productId) {
                 <div class="card bg-[#FFF1EA] w-64 shadow-sm text-black">
-                    <figure class="h-63 bg-white p-4 overflow-hidden">
+                    <figure class="relative h-63 bg-white p-4 overflow-hidden">
+                        <div class="absolute top-2 right-2 z-100">
+                            <app-favorite-button
+                                [productId]="product.productId">
+                            </app-favorite-button>
+                        </div>
+
                         <img
                             class="w-full h-full object-contain"
                             [src]="product.imageUrls?.[0]"
@@ -121,9 +127,11 @@
                                 R$ {{ product.price }}
                             </span>
 
-                            <button class="text-[#42240D] font-medium cursor-pointer hover:bg-[#ffd0b8] p-1 rounded">
-                                Ver detalhes →
-                            </button>
+                            <a [href]="'/produto/' + product.productId">
+                                <button class="text-[#42240D] font-medium cursor-pointer hover:bg-[#ffd0b8] p-1 rounded">
+                                    Ver detalhes →
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

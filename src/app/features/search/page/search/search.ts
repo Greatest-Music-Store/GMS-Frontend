@@ -3,11 +3,10 @@ import { ProductModels } from '../../../../models/product.model';
 import { ProductsService } from '../../../../core/services/products/products';
 import { ɵInternalFormsSharedModule } from "@angular/forms";
 import { FormsModule } from '@angular/forms';
-
-
+import { FavoriteButton } from '../../../../shared/components/favorite-button/favorite-button';
 @Component({
   selector: 'app-search',
-  imports: [ɵInternalFormsSharedModule, FormsModule],
+  imports: [ɵInternalFormsSharedModule, FormsModule, FavoriteButton],
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
