@@ -3,19 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ProductModels } from '../../../models/product.model';
 import { API_CONFIG } from '../../api.config';
+import { ProductFilters } from '../../../models/product.model';
 
-export interface ProductFilters {
-  Name?: string;
-  Brand?: string;
-  CategoryId?: string;
-  SubcategoryId?: string;
-  MinPrice?: number;
-  MaxPrice?: number;
-  SortBy?: string;
-  CategoryName?: string;
-  SubcategoryName?: string;
-  search?: string;
-}
+
 
 @Injectable({
   providedIn: 'root',

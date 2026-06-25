@@ -17,3 +17,15 @@ export interface ProductModels {
     categoryID: string;
     subCategoryId: string;
 }
+export interface ProductFilters {
+  Name?: string;
+  Brand?: string;
+  CategoryId?: string;
+  SubcategoryId?: string;
+  MinPrice?: number;
+  MaxPrice?: number;
+  SortBy?: string;
+  CategoryName?: string;
+  SubcategoryName?: string;
+  search?: string;
+}
