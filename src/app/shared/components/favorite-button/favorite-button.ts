@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   imports: [NgIcon, RouterLink],
   viewProviders: [provideIcons({tdesignHeart, tdesignHeartFilled})],
   templateUrl: './favorite-button.html',
-  styleUrl: './favorite-button.css',
+
 })
 export class FavoriteButton implements OnInit {
   @Input({ required: true }) productId = '';

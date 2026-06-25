@@ -11,7 +11,6 @@ import { AuthStore } from '../../../core/stores/auth.store';
   imports: [NgIcon, RouterLink],
   viewProviders: [provideIcons({ tdesignCartAdd })],
   templateUrl: './cart-button.html',
-  styleUrl: './cart-button.css',
 })
 export class CartButton {
   @Input({ required: true }) productId = '';

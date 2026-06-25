@@ -16,7 +16,7 @@ import { ProductFilters } from '../../models/product.model';
   selector: 'app-product',
   imports: [NgIcon, FavoriteButton, CartButton, ProductsCarrousel],
   templateUrl: './product.html',
-  styleUrl: './product.css',
+
   viewProviders: [provideIcons({ tdesignStarFilled})]
 })
 export class Product implements OnInit{

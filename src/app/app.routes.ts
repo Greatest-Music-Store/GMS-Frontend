@@ -1,15 +1,21 @@
 import { Routes } from '@angular/router';
 import { Login } from './features/auth/pages/login/login'
 import { Register } from './features/auth/pages/register/register';
-import { Home } from './features/home/page/home'
-import { MainLayout } from './layouts/main-layout/main-layout'
-import { Search } from './features/search/page/search/search';
+import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-password';
 
+import { MainLayout } from './layouts/main-layout/main-layout'
+import { Search } from './features/search/search';
+import { Home } from './features/home/home'
 import { Favorite } from './features/favorite/favorite';
 import { Cart } from './features/cart/cart';
 import { Checkout } from './features/checkout/checkout';
 import { Product } from './features/product/product';
-import { ForgotPassword } from './features/auth/pages/forgot-password/forgot-password';
+
+import { AdmLayout } from './layouts/adm-layout/adm-layout';
+import { Dashboard } from './features/admin/pages/dashboard/dashboard';
+import { ProductsAdmPage } from './features/admin/pages/products/products';
+import { Categories } from './features/admin/pages/categories/categories';
+import { UsersAdmPage } from './features/admin/pages/users/users';
 
 export const routes: Routes = [
 
@@ -41,14 +47,14 @@ export const routes: Routes = [
                 path: 'search/**',
                 component: Search,
                 title: 'Search'
-            }, 
+            },
             {
                 path: '',
                 redirectTo: '/home',
                 pathMatch: "full"
             },
             {
-                path:'produto/:id',
+                path: 'produto/:id',
                 component: Product
             },
             {
@@ -62,16 +68,47 @@ export const routes: Routes = [
                 component: Checkout
             },
             {
-                path:'favorite',
+                path: 'favorite',
                 title: 'Favoritos',
                 component: Favorite
             },
-            {
-                path:'**',
-                redirectTo: '/home',
-                pathMatch: 'full'
-            },
-            
+
         ]
     },
+    {
+        path: 'adm',
+        component: AdmLayout,
+        children: [
+             {
+                path: '**',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
+            {
+                path: 'dashboard',
+                component: Dashboard,
+                title: 'Adm Dashboard'
+            },
+            {
+                path: 'products',
+                component: ProductsAdmPage,
+                title: 'Todos os produtos'
+            },
+            {
+                path: 'users',
+                component: UsersAdmPage,
+                title: 'Clientes'
+            },
+            {
+                path: 'categories',
+                component: Categories,
+                title: 'Categorias'
+            }
+        ]
+    }
 ];

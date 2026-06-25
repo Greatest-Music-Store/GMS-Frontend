@@ -5,7 +5,6 @@ import { Footer } from '../../shared/components/footer/footer';
 @Component({
   selector: 'app-main-layout',
   imports: [RouterOutlet,Header,Footer],
-  templateUrl: './main-layout.html',
-  styleUrl: './main-layout.css',
+  templateUrl: './main-layout.html'
 })
 export class MainLayout {}

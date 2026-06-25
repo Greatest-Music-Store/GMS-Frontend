@@ -1,24 +1,13 @@
 <header class="border-b border-[#F0F0F0] bg-white shadow-sm">
   <div class="flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:px-8">
-    <a routerLink="/home" class="shrink-0 text-3xl font-bold text-[#42240D]">
+    <a routerLink="/home" class="shrink-0 text-2xl font-bold font-[Playfair_Display] text-[#42240D]">
       Greatest Music Store
     </a>
 
-    <nav class="flex items-center gap-4 overflow-x-auto font-[Montserrat] text-sm font-semibold text-[#50443D] lg:text-base">
-      <a routerLink="/search" [queryParams]="{ category: 'Sopros' }" class="transition hover:text-[#FF5A00]">Sopros</a>
-      <a routerLink="/search" [queryParams]="{ category: 'Cordas' }" class="transition hover:text-[#FF5A00]">Cordas</a>
-      <a routerLink="/search" [queryParams]="{ category: 'Percussão' }" class="transition hover:text-[#FF5A00]">Percussão</a>
-      <a routerLink="/search" [queryParams]="{ category: 'Teclas' }" class="transition hover:text-[#FF5A00]">Teclas</a>
-      <a routerLink="/search" [queryParams]="{ category: 'Discos' }" class="transition hover:text-[#FF5A00]">Discos</a>
-      <a routerLink="/search" >Mais...</a>
-    </nav>
 
-    <div class="relative min-w-0 flex-1">
-      <input
-        type="text"
-        placeholder="Buscar produtos"
-        [formControl]="searchControl"
-        (keydown.enter)="search()"
+
+    <div class="relative min-w-0 flex-1 px-6">
+      <input type="text" placeholder="Buscar produtos" [formControl]="searchControl" (keydown.enter)="search()"
         class="w-full rounded-md border border-[#E7D8C7] bg-[#FFF1EA] px-4 py-2 text-[#50443D] outline-none transition focus:border-[#FF5A00]">
 
       <!-- @if (suggestions.length > 0) {
@@ -36,6 +25,9 @@
     </div>
 
     <nav class="flex shrink-0 items-center gap-4 text-[#50443D]">
+
+
+      @if (authStore.isLogged()) {
       <a routerLink="/favorite"
         class="grid h-10 w-10 place-items-center rounded-md transition hover:bg-[#FFF1EA] hover:text-[#FF5A00]"
         aria-label="Favoritos" title="Favoritos">
@@ -46,8 +38,6 @@
         aria-label="Carrinho" title="Carrinho">
         <ng-icon name="tdesignCart" size="26"></ng-icon>
       </a>
-
-      @if (authStore.isLogged()) {
       <div class="relative">
 
         <button type="button"

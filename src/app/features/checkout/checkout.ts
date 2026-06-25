@@ -5,7 +5,7 @@ import { AlignDirective } from "@coreui/angular";
   selector: 'app-checkout',
   imports: [AlignDirective],
   templateUrl: './checkout.html',
-  styleUrl: './checkout.css',
+
 })
 export class Checkout {
 

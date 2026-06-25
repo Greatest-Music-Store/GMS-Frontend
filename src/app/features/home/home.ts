@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { Carousel03 } from './components/carousel03/carousel03';
+import { ProductsCarrousel } from '../../shared/components/products-carrousel/products-carrousel';
+import { AlignDirective, AlertLinkDirective } from "@coreui/angular";
+import { RouterLink } from '@angular/router';
+
+import { ProductModels, ProductFilters } from '../../models/product.model';
+@Component({
+  selector: 'app-home',
+  imports: [Carousel03, ProductsCarrousel, AlignDirective, AlertLinkDirective, RouterLink],
+  templateUrl: './home.html',
+
+})
+export class Home {
+
+     relatedProductFilters: ProductFilters = {};
+
+  //  private categoryFilters(product: ProductModels): ProductFilters {
+        
+    //  }
+}

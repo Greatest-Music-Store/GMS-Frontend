@@ -1,0 +1,60 @@
+<main>
+        <docs-carousel03></docs-carousel03>
+        <div>
+                <div>
+                        <div class="px-8">
+                                <h1 class="text-[#42240D] font-bold font-[Playfair_Display] text-4xl pt-4 pb-2 ml-6">
+                                        Principais Categorias</h1>
+                        </div>
+                        <section class="flex itens-center gap-32 justify-center p-8 font-[Playfair_Display]">
+                                <div>
+                                        <a href="" routerLink="/search" [queryParams]="{ category: 'Cordas' }"><img
+                                                        src="https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/Corda.png"
+                                                        alt=""></a>
+                                        <p class="text-center text-[#251912] text-xl">Cordas</p>
+                                </div>
+                                <div>
+                                        <a href="" routerLink="/search" [queryParams]="{ category: 'Sopros' }"><img
+                                                        src="https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/Sopro.png"
+                                                        alt=""></a>
+                                        <p class="text-center text-[#251912] text-xl">Sopros</p>
+                                </div>
+                                <div>
+                                        <a href="" routerLink="/search" [queryParams]="{ category: 'Percussão' }"><img
+                                                        src="https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/Percussao.png"
+                                                        alt=""></a>
+                                        <p class="text-center text-[#251912] text-xl">Percussão</p>
+                                </div>
+                                <div>
+                                        <a href="" routerLink="/search" [queryParams]="{ category: 'Teclas' }"><img
+                                                        src="https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/keys.png"
+                                                        alt=""></a>
+                                        <p class="text-center text-[#251912] text-xl">Teclas</p>
+                                </div>
+                                <div>
+                                        <a href="" routerLink="/search" [queryParams]="{ category: 'Áudio' }"><img
+                                                        src="https://brqcyvmsflpddaqxqjjl.supabase.co/storage/v1/object/public/Evento/audio.png"
+                                                        alt=""></a>
+                                        <p class="text-center text-[#251912] text-xl">Áudio</p>
+                                </div>
+                        </section>
+                </div>
+                <div class="px-8">
+                        <h1 class="text-[#42240D] font-bold font-[Playfair_Display] text-4xl pt-4 pb-2 ml-6">Produtos
+                                Recomendados</h1>
+                </div>
+                <app-products-carrousel></app-products-carrousel>
+                <div class="px-8">
+                        <h1 class="text-[#42240D] font-bold font-[Playfair_Display] text-4xl pt-4 pb-2 ml-6">Melhores
+                                Ofertas</h1>
+                </div>
+                <app-products-carrousel></app-products-carrousel>
+
+
+                <div class="flex justify-end mr-8  pb-4 ">
+                        <a routerLink="/search"
+                        class="text-2xl font-[Playfair_Display] text-[#403032] underline hover:text-yellow-500"
+                        >Ver mais</a>
+                </div>
+        </div>
+</main>

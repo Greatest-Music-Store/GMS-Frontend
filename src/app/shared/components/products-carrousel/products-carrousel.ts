@@ -9,7 +9,6 @@ import { CartButton } from '../cart-button/cart-button';
   selector: 'app-products-carrousel',
   imports: [CarouselModule, FavoriteButton, RouterLink, CartButton],
   templateUrl: './products-carrousel.html',
-  styleUrl: './products-carrousel.css',
 })
 export class ProductsCarrousel implements OnInit, OnChanges {
 
