@@ -11,7 +11,7 @@ import { Cart } from './features/cart/cart';
 import { Checkout } from './features/checkout/checkout';
 import { Product } from './features/product/product';
 
-import { AdmLayout } from './layouts/adm-layout/adm-layout';
+import { AdmLayout } from './features/admin/adm-layout/adm-layout';
 import { Dashboard } from './features/admin/pages/dashboard/dashboard';
 import { ProductsAdmPage } from './features/admin/pages/products/products';
 import { Categories } from './features/admin/pages/categories/categories';
@@ -79,16 +79,6 @@ export const routes: Routes = [
         path: 'adm',
         component: AdmLayout,
         children: [
-             {
-                path: '**',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
-            },
-            {
-                path: '',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
-            },
             {
                 path: 'dashboard',
                 component: Dashboard,
