@@ -1,9 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { UserBlockModal } from '../../components/modal/user-block-modal/user-block-modal';
+type AdminModal =
+  | 'userBlock'
+  | null;
 
 @Component({
   selector: 'app-users',
-  imports: [],
+  imports: [UserBlockModal],
   templateUrl: './users.html',
 
 })
-export class UsersAdmPage {}
+export class UsersAdmPage {
+  activeModal = signal<AdminModal>(null);
+
+  openModal(modal: AdminModal) {
+    this.activeModal.set(modal);
+  }
+
+  closeModal() {
+    this.activeModal.set(null);
+  }
+
+}

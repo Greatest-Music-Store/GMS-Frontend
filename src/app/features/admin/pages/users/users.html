@@ -1,1 +1,176 @@
-<p>users works!</p>
+<div class="flex flex-col">
+    <div class="p-6 flex items-center w-350">
+        <h1 class="text-5xl font-[Playfair_Display] font-bold text-[#5c3a21]">Usuarios</h1>
+    </div>
+
+</div>
+
+<div class="mt-8 bg-white rounded-2xl overflow-hidden shadow ml-4">
+
+    <div class="grid grid-cols-[2fr_1.3fr_1fr_1.3fr_1fr] bg-[#5c3a21] text-white font-semibold px-6 py-4">
+        <p>Nome</p>
+        <p>CPF</p>
+        <p>Total gasto</p>
+        <p>Compras</p>
+        <p>Ações</p>
+    </div>
+
+    <details class="bg-white border-b group">
+
+        <summary class="grid grid-cols-[2fr_1.3fr_1fr_1.3fr_1fr] items-center px-6 py-4 cursor-pointer list-none">
+
+            <div class="flex items-center gap-3">
+                <span class="transition-transform group-open:rotate-90 text-[#5c3a21]">
+                    ▶
+                </span>
+
+                <div class="bg-[#F1E3D9] w-10 h-10 rounded-2xl flex items-center justify-center">
+                    <p class="text-[#5C3A21] font-semibold">JC</p>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-[#5c3a21]">Jorge da Capadócia</p>
+                    <p class="text-sm text-gray-500">Cliente desde 2024</p>
+                </div>
+            </div>
+
+            <p class="text-[#5c3a21]">000.000.000-67</p>
+
+            <p class="font-semibold text-[#5c3a21]">R$ 2.450,90</p>
+
+            <p>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                    12 compras
+                </span>
+            </p>
+
+            <div class="flex gap-3">
+                <button class="px-4 py-2 rounded-xl bg-red-100 text-red-700 hover:bg-red-200"
+                    (click)="(openModal('userBlock'))">
+                    Bloquear
+                </button>
+            </div>
+
+        </summary>
+
+        <div class="bg-[#f8f3ed] px-10 py-4 space-y-3">
+
+            <details class="bg-white rounded-xl overflow-hidden group">
+                <summary class="flex items-center gap-3 px-4 py-3 cursor-pointer list-none">
+                    <span class="transition-transform group-open:rotate-90 text-[#5c3a21]">▶</span>
+                    <p class="font-semibold text-[#5c3a21]">Histórico de Compras</p>
+                </summary>
+
+                <div class="px-10 pb-4 space-y-2">
+                    <div class="flex justify-between border-t pt-3">
+                        <p>Violão Clássico</p>
+                        <p class="font-semibold">R$ 899,90</p>
+                    </div>
+
+                    <div class="flex justify-between border-t pt-3">
+                        <p>Capotraste</p>
+                        <p class="font-semibold">R$ 59,90</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="bg-white rounded-xl overflow-hidden group">
+                <summary class="flex items-center gap-3 px-4 py-3 cursor-pointer list-none">
+                    <span class="transition-transform group-open:rotate-90 text-[#5c3a21]">▶</span>
+                    <p class="font-semibold text-[#5c3a21]">Avaliações</p>
+                </summary>
+
+                <div class="px-10 pb-4 space-y-2">
+                    <div class="border-t pt-3">
+                        <p class="font-semibold text-[#5c3a21]">★★★★★</p>
+                        <p class="text-gray-600">Produto muito bom, chegou rápido.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+
+    </details>
+    <details class="bg-white border-b group">
+
+        <summary class="grid grid-cols-[2fr_1.3fr_1fr_1.3fr_1fr] items-center px-6 py-4 cursor-pointer list-none">
+
+            <div class="flex items-center gap-3">
+                <span class="transition-transform group-open:rotate-90 text-[#5c3a21]">
+                    ▶
+                </span>
+
+                <div class="bg-[#F1E3D9] w-10 h-10 rounded-2xl flex items-center justify-center">
+                    <p class="text-[#5C3A21] font-semibold">JC</p>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-[#5c3a21]">Jorge da Capadócia</p>
+                    <p class="text-sm text-gray-500">Cliente desde 2024</p>
+                </div>
+            </div>
+
+            <p class="text-[#5c3a21]">000.000.000-67</p>
+
+            <p class="font-semibold text-[#5c3a21]">R$ 2.450,90</p>
+
+            <p>
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                    12 compras
+                </span>
+            </p>
+
+            <div class="flex gap-3">
+                <button class="px-4 py-2 rounded-xl bg-red-100 text-red-700 hover:bg-red-200">
+                    Bloquear
+                </button>
+            </div>
+
+        </summary>
+
+        <div class="bg-[#f8f3ed] px-10 py-4 space-y-3">
+
+            <details class="bg-white rounded-xl overflow-hidden group">
+                <summary class="flex items-center gap-3 px-4 py-3 cursor-pointer list-none">
+                    <span class="transition-transform group-open:rotate-90 text-[#5c3a21]">▶</span>
+                    <p class="font-semibold text-[#5c3a21]">Histórico de Compras</p>
+                </summary>
+
+                <div class="px-10 pb-4 space-y-2 text-[#]">
+                    <div class="flex justify-between border-t pt-3">
+                        <p>Violão Clássico</p>
+                        <p class="font-semibold">R$ 899,90</p>
+                    </div>
+
+                    <div class="flex justify-between border-t pt-3">
+                        <p>Capotraste</p>
+                        <p class="font-semibold">R$ 59,90</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="bg-white rounded-xl overflow-hidden group">
+                <summary class="flex items-center gap-3 px-4 py-3 cursor-pointer list-none">
+                    <span class="transition-transform group-open:rotate-90 text-[#5c3a21]">▶</span>
+                    <p class="font-semibold text-[#5c3a21]">Avaliações</p>
+                </summary>
+
+                <div class="px-10 pb-4 space-y-2">
+                    <div class="border-t pt-3">
+                        <p class="font-semibold text-[#5c3a21]">★★★★★</p>
+                        <p class="text-gray-600">Produto muito bom, chegou rápido.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+
+    </details>
+
+
+    @if (activeModal() === 'userBlock') {
+    <app-user-block-modal (close)="closeModal()">
+    </app-user-block-modal>
+    }
+
+</div>

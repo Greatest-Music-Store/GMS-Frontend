@@ -1,42 +1,120 @@
 <main class="">
-    <div class="flex flex-col">
-        <div class="p-6 flex items-center w-350">
-            <h1 class="text-5xl font-[Playfair_Display] font-bold text-[#5c3a21]">Gerenciador de Produtos</h1>
-        </div>
-        <div class="bg-[#5C3A21] justify-end flex py-4 px-8 ml-auto rounded-2xl m-2">
-            <h1>+ Add New Instrument</h1>
-        </div>
+  <div class="flex flex-col">
+    <div class="p-6 flex items-center w-350">
+      <h1 class="text-5xl font-[Playfair_Display] font-bold text-[#5c3a21]">Gerenciador de Produtos</h1>
     </div>
-    <div class="flex items-center mt-10 gap-8 m-2">
-        <div class=" rounded-2xl bg-white flex-1"> <input type="text" placeholder="Busca por nome, id ou marca"
-                class="flex-1 w-full p-4"></div>
-        <div class="p-4 rounded-2xl bg-white">
-            <input type="" placeholder="Todas as categorias">
-        </div>
-        <div class="p-4 rounded-2xl bg-white">
-            <input type="" placeholder="Price Range">
-        </div>
+    <div class="bg-[#5C3A21] justify-end flex py-4 px-8 ml-auto rounded-2xl m-2 hover:bg">
+      <button (click)="openModal('addProduct')">
+        + Add New Instrument
+      </button>
     </div>
-    <div>
-        <div class="flex items-center bg-[#5c3a21] mt-5 mx-2 rounded-t-2xl gap-60">
-            <div class="pt-3 px-4 pb-1">
-                <p>Produto</p>
-            </div>
-            <div class="pt-3 px-4 pb-1">
-                <p>Categoria</p>
-            </div>
-            <div class="pt-3 px-4 pb-1">
-                <p>Preço</p>
-            </div>
-            <div class="pt-3 px-4 pb-1">
-                <p>Stock</p>
-            </div>
-            <div class="pt-3 px-4 pb-1">
-                <p>Ações</p>
-            </div>
-        </div>
-        <div class="m-2 bg-white">
-            <div> </div>
-        </div>  
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 ml-4">
+    <input type="text" placeholder="Busca por nome, id ou marca"
+      class="w-full p-4 rounded-2xl bg-white outline-none text-[#5c3a21]" />
+
+    <select class="w-full p-4 rounded-2xl bg-white outline-none text-[#5c3a21]">
+      <option>Todas as categorias</option>
+      <option>Cordas</option>
+      <option>Sopros</option>
+      <option>Percussão</option>
+    </select>
+
+    <select class="w-full p-4 rounded-2xl bg-white outline-none text-[#5c3a21]">
+      <option>Price Range</option>
+      <option>Até R$ 500</option>
+      <option>R$ 500 - R$ 2000</option>
+      <option>Acima de R$ 2000</option>
+    </select>
+  </div>
+
+  <div class="mt-8 bg-white rounded-2xl overflow-hidden shadow ml-4">
+    <div class="grid grid-cols-5 bg-[#5c3a21] text-white font-semibold px-6 py-4">
+      <p>Produto</p>
+      <p>Categoria</p>
+      <p>Preço</p>
+      <p>Stock</p>
+      <p>Ações</p>
     </div>
+
+    <div class="grid grid-cols-5 items-center px-6 py-4 border-b">
+      <div class="flex items-center gap-4">
+        <img src="" class="w-16 h-16 object-cover rounded-xl" />
+
+        <div>
+          <p class="font-semibold text-[#5c3a21]">nome do produto</p>
+          <p class="text-sm text-gray-500">ID: xxxxx-xxxxxxx-xxxxx</p>
+        </div>
+      </div>
+
+      <p class="text-[#5c3a21]">Categoria</p>
+
+      <p class="font-semibold text-[#5c3a21]">R$ xx.xxx,xx</p>
+
+      <p>
+        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+          x unidades
+        </span>
+      </p>
+
+      <div class="flex gap-3">
+        <button class="px-4 py-2 rounded-xl bg-blue-100 text-blue-700 hover:bg-blue-200"
+          (click)="(openModal('editProduct'))">
+          Editar
+        </button>
+
+
+        <button class="px-4 py-2 rounded-xl bg-red-100 text-red-700 hover:bg-red-200"
+          (click)="(openModal('deleteProduct'))">
+          Excluir
+        </button>
+
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5 items-center px-6 py-4 border-b">
+      <div class="flex items-center gap-4">
+        <img src="" class="w-16 h-16 object-cover rounded-xl" />
+
+        <div>
+          <p class="font-semibold text-[#5c3a21]">nome do produto</p>
+          <p class="text-sm text-gray-500">ID: xxxxx-xxxxxxx-xxxxx</p>
+        </div>
+      </div>
+
+      <p class="text-[#5c3a21]">Categoria</p>
+
+      <p class="font-semibold text-[#5c3a21]">R$ xx.xxx,xx</p>
+
+      <p>
+        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+          x unidades
+        </span>
+      </p>
+
+      <div class="flex gap-3">
+        <button class="px-4 py-2 rounded-xl bg-blue-100 text-blue-700 hover:bg-blue-200">
+          Editar
+        </button>
+
+        <button class="px-4 py-2 rounded-xl bg-red-100 text-red-700 hover:bg-red-200">
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+  @if (activeModal() === 'addProduct') {
+  <app-add-product-modal (close)="closeModal()">
+  </app-add-product-modal>
+  }
+
+  @if (activeModal() === 'editProduct') {
+  <app-edit-product-modal (close)="closeModal()">
+  </app-edit-product-modal>
+  }
+
+  @if (activeModal() === 'deleteProduct') {
+  <app-delete-product-modal (close)="closeModal()">
+  </app-delete-product-modal>
+  }
 </main>

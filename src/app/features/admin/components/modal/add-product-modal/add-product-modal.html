@@ -1,0 +1,105 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6">
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-5xl p-8">
+
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-3xl font-bold text-[#5c3a21]">
+        Adicionar Produto
+      </h2>
+
+      <button class="text-2xl text-gray-500 hover:text-red-500" (click)="close.emit()">
+        ✕
+      </button>
+    </div>
+
+    <form class="grid grid-cols-[1fr_1.4fr] gap-8">
+
+      <!-- Preview -->
+      <div class="space-y-4">
+        <div class="w-full h-[420px] bg-[#f8f3ed] rounded-2xl flex items-center justify-center overflow-hidden border">
+          
+          @if (imageUrls.at(0)?.value) {
+            <img
+              [src]="imageUrls.at(0)?.value"
+              class="w-full h-full object-cover"
+              alt="Preview do produto"
+            />
+          } @else {
+            <p class="text-gray-400 text-center px-6">
+              Preview da primeira imagem
+            </p>
+          }
+
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="space-y-4">
+
+        <div>
+          <label class="block mb-2 font-medium text-[#5c3a21]">
+            URL da imagem principal
+          </label>
+
+          <input
+            type="text"
+            
+            class="w-full rounded-xl border border-gray-300 p-3 outline-none text-[#5c3a21] focus:border-[#5c3a21]"
+            placeholder="https://..."
+          />
+        </div>
+
+        <div>
+          <label class="block mb-2 font-medium text-[#5c3a21]">
+            Nome do Produto
+          </label>
+
+          <input
+            type="text"
+            class="w-full rounded-xl border text-[#5c3a21] border-gray-300 p-3"
+            placeholder="Ex: Violão Yamaha C40"
+          />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block mb-2 font-medium text-[#5c3a21]">Marca</label>
+            <input type="text" class="w-full rounded-xl border text-[#5c3a21] border-gray-300 p-3" />
+          </div>
+
+          <div>
+            <label class="block mb-2 font-medium text-[#5c3a21]">Preço</label>
+            <input type="number" class="w-full rounded-xl border text-[#5c3a21] border-gray-300 p-3" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block mb-2 font-medium text-[#5c3a21]">
+            Descrição
+          </label>
+
+          <textarea
+            rows="3"
+            class="w-full rounded-xl border border-gray-300 p-3 resize-none"
+          ></textarea>
+        </div>
+
+        <div class="flex justify-end gap-4 pt-4">
+          <button
+            type="button"
+            class="px-6 py-3 rounded-xl bg-gray-200 hover:bg-gray-300"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            class="px-6 py-3 rounded-xl bg-[#5c3a21] text-white hover:bg-amber-700"
+          >
+            Salvar Produto
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

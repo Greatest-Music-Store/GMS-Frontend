@@ -1,5 +1,5 @@
 
 
 export const API_CONFIG = {
-  baseUrl: 'http://192.168.1.211:5041',
+  baseUrl: 'http://localhost:5041',
 };
