@@ -16,6 +16,8 @@ import { Dashboard } from './features/admin/pages/dashboard/dashboard';
 import { ProductsAdmPage } from './features/admin/pages/products/products';
 import { Categories } from './features/admin/pages/categories/categories';
 import { UsersAdmPage } from './features/admin/pages/users/users';
+import { Cupomeofertas } from './features/admin/pages/cupomeofertas/cupomeofertas';
+
 
 export const routes: Routes = [
 
@@ -98,6 +100,11 @@ export const routes: Routes = [
                 path: 'categories',
                 component: Categories,
                 title: 'Categorias'
+            },
+            {
+                path: 'cupom-e-ofertas',
+                component: Cupomeofertas,
+                title: 'Cupom & Ofertas',
             }
         ]
     }
