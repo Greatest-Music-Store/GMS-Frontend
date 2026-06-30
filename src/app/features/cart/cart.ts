@@ -1,13 +1,13 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DecimalPipe } from '@angular/common';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { CartModel } from '../../models/cart.model';
 import { CartService } from '../../core/services/cart/cart';
 import { switchMap, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
-  imports: [RouterLink, DecimalPipe],
+  imports: [RouterLink, DecimalPipe, CurrencyPipe],
   templateUrl: './cart.html',
 })
 export class Cart implements OnInit {

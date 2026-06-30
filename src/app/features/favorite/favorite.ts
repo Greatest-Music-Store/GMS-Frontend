@@ -7,11 +7,12 @@ import { FavoriteModel } from '../../models/favorite.model';
 import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
 import { RouterLink } from '@angular/router';
 import { CartButton } from '../../shared/components/cart-button/cart-button';
+import { CurrencyPipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-favorite',
-  imports: [NgIcon, FavoriteButton, RouterLink, CartButton],
+  imports: [NgIcon, FavoriteButton, RouterLink, CartButton, CurrencyPipe],
   templateUrl: './favorite.html',
   viewProviders: [
     provideIcons({

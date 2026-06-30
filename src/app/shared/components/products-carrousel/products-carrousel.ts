@@ -5,9 +5,10 @@ import { FavoriteButton } from '../favorite-button/favorite-button';
 import { CarouselModule } from 'primeng/carousel';
 import { RouterLink } from '@angular/router';
 import { CartButton } from '../cart-button/cart-button';
+import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-products-carrousel',
-  imports: [CarouselModule, FavoriteButton, RouterLink, CartButton],
+  imports: [CarouselModule, FavoriteButton, RouterLink, CartButton, CurrencyPipe],
   templateUrl: './products-carrousel.html',
 })
 export class ProductsCarrousel implements OnInit, OnChanges {

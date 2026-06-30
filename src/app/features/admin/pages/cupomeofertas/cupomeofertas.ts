@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-cupomeofertas',
   imports: [],
   templateUrl: './cupomeofertas.html',
-  styleUrl: './cupomeofertas.css',
+
 })
 export class Cupomeofertas {}

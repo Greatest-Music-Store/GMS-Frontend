@@ -77,7 +77,7 @@
           </p>
 
           <p class="font-[Montserrat] text-2xl font-extrabold text-[#42240D]">
-            R$ {{ item.price | number:'1.2-2' }}
+             {{ item.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
           </p>
 
         </div>
@@ -118,7 +118,7 @@
               Subtotal
             </p>
             <p class="font-[Montserrat] text-2xl font-extrabold text-[#42240D]">
-              R$ {{ (item.price * item.quantity) | number:'1.2-2' }}
+             {{ (item.price * item.quantity) | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}
             </p>
           </div>
 

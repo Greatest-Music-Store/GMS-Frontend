@@ -37,7 +37,7 @@
       </div>
 
       <p class="font-[Montserrat] text-3xl font-extrabold text-[#FF5A00]">
-        {{ 'R$ ' + product.price }}
+         {{ product.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
       </p>
 
       @if (product.description) {
