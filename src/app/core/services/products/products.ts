@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { ProductModels } from '../../../models/product.model';
 import { API_CONFIG } from '../../api.config';
 import { ProductFilters } from '../../../models/product.model';
+import { Product } from '../../../features/product/product';
 
 
 
@@ -75,6 +76,12 @@ export class ProductsService {
       `${API_CONFIG.baseUrl}/api/product`,
       { params }
     );
+  }
+
+  deleteProduct(productId: string){
+    return this.http.delete<ProductModels>(
+      `${API_CONFIG.baseUrl}/api/product/${productId}`
+    )
   }
 
   private parseResponse<T>(response: string, fallback: T): T {

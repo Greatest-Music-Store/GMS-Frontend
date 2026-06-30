@@ -23,23 +23,14 @@ type AdminModal =
   templateUrl: './products.html'
 })
 export class ProductsAdmPage {
+  @Input() filters: ProductFilters = {};
 
-
-   @Input() filters: ProductFilters = {};
-  
-    products = signal<ProductModels[]>([]);
+  products = signal<ProductModels[]>([]);
+  selectedProduct = signal<ProductModels | null>(null);
 
   activeModal = signal<AdminModal>(null);
 
-  openModal(modal: AdminModal) {
-    this.activeModal.set(modal);
-  }
-
-  closeModal() {
-    this.activeModal.set(null);
-  }
-
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -51,13 +42,32 @@ export class ProductsAdmPage {
     }
   }
 
-  private loadProducts(): void {
+  openModal(modal: AdminModal) {
+    this.activeModal.set(modal);
+  }
+
+  openEditModal(product: ProductModels) {
+    this.selectedProduct.set(product);
+    this.activeModal.set('editProduct');
+  }
+
+  openDeleteModal(product: ProductModels) {
+    this.selectedProduct.set(product);
+    this.activeModal.set('deleteProduct');
+  }
+
+  closeModal() {
+    this.activeModal.set(null);
+    this.selectedProduct.set(null);
+  }
+
+  loadProducts(): void {
     this.productService.getProducts(this.filters).subscribe({
       next: (products) => {
         this.products.set(products);
       },
       error: (error) => {
-        console.error('Erro ao carregar produtos do carrossel:', error);
+        console.error('Erro ao carregar produtos:', error);
         this.products.set([]);
       }
     });
