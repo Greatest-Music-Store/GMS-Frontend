@@ -10,11 +10,12 @@ import { FavoriteButton } from '../../shared/components/favorite-button/favorite
 import { CartButton } from '../../shared/components/cart-button/cart-button';
 import { ProductsCarrousel } from '../../shared/components/products-carrousel/products-carrousel';
 import { ProductFilters } from '../../models/product.model';
+import { CurrencyPipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-product',
-  imports: [NgIcon, FavoriteButton, CartButton, ProductsCarrousel],
+  imports: [NgIcon, FavoriteButton, CartButton, ProductsCarrousel, CurrencyPipe],
   templateUrl: './product.html',
 
   viewProviders: [provideIcons({ tdesignStarFilled})]

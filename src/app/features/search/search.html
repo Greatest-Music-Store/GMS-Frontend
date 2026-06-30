@@ -124,7 +124,7 @@
 
                         <div class="card-actions justify-between items-center mt-2">
                             <span class="font-bold text-[#42240D]">
-                                R$ {{ product.price }}
+                                {{ product.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
                             </span>
 
                             <a [routerLink]="['/produto', product.productId]" [state]="{ product: product }">

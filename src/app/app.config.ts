@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import Aura from '@primeuix/themes/aura';
 import { provideStore } from '@ngrx/store';
+import { LOCALE_ID } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,5 +25,9 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     provideStore(),
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR'
+    }
   ],
 };

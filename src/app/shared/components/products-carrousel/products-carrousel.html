@@ -47,7 +47,7 @@
 
                     <div class="mt-auto flex items-center justify-between gap-3 pt-4">
                         <p class="font-[Montserrat] text-xl font-extrabold text-[#42240D]">
-                            {{ 'R$ ' +product.price }}
+                             {{ product.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
                         </p>
                         <div class="flex shrink-0 items-center gap-2">
                             <app-favorite-button [productId]="product.productId"></app-favorite-button>

@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { FavoriteButton } from '../../shared/components/favorite-button/favorite-button';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-search',
-  imports: [ɵInternalFormsSharedModule, FormsModule, FavoriteButton, RouterLink],
+  imports: [ɵInternalFormsSharedModule, FormsModule, FavoriteButton, RouterLink, CurrencyPipe],
   templateUrl: './search.html',
 
 })
