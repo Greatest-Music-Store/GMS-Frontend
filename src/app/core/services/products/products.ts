@@ -48,6 +48,12 @@ export class ProductsService {
     return Promise.resolve(this.getProductById);
   }  
 
+  getOffers(): Observable<ProductModels[]> {
+    return this.http.get<ProductModels[]>(
+      `${API_CONFIG.baseUrl}/api/product/offers`
+    );
+  }
+
   getAllProducts(): Observable<ProductModels[]> {
     return this.http.get<ProductModels[]>(
       `${API_CONFIG.baseUrl}/api/product`
