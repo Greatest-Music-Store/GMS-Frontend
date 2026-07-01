@@ -34,36 +34,3 @@
   </div>
 </div>
 }
-
-@if (showLoginPopup()) {
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-
-    <div class="bg-white p-6 rounded-xl shadow-lg w-80 text-center">
-
-      <h2 class="text-lg font-semibold text-[#42240D]">
-        Faça login para salvar no carrinho
-      </h2>
-
-      <p class="text-sm text-gray-600 mt-2">
-        Você precisa estar logado para salvar produtos no carrinho.
-      </p>
-
-      <div class="flex justify-between mt-4 gap-2">
-
-        <button
-          class="flex-1 cursor-pointer bg-gray-200 rounded p-2"
-          (click)="showLoginPopup.set(false)">
-          Cancelar
-        </button>
-
-        <a
-          routerLink="/login"
-          class="flex-1 cursor-pointer bg-[#FF5A00] text-white rounded p-2 text-center">
-          Login
-        </a>
-
-      </div>
-
-    </div>
-  </div>
-}

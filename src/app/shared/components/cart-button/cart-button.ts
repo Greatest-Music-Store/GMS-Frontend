@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, effect, EventEmitter, Input, OnDestroy, OnInit, Output, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { tdesignCartAdd } from '@ng-icons/tdesign-icons';
 import { CartService } from '../../../core/services/cart/cart';
 import { CartModel } from '../../../models/cart.model';
 import { RouterLink } from '@angular/router';
 import { AuthStore } from '../../../core/stores/auth.store';
+import { LoginDialogService } from '../../../core/services/login-dialog/login-dialog-service';
 
 @Component({
   selector: 'app-cart-button',
@@ -12,22 +13,24 @@ import { AuthStore } from '../../../core/stores/auth.store';
   viewProviders: [provideIcons({ tdesignCartAdd })],
   templateUrl: './cart-button.html',
 })
-export class CartButton {
+export class CartButton{
   @Input({ required: true }) productId = '';
   @Input() quantity = 1;
   @Output() addedToCart = new EventEmitter<CartModel>();
 
   loading = signal(false);
   added = signal(false);
-  showLoginPopup = signal(false);
 
-  constructor(private cartService: CartService, private authStore: AuthStore) {}
+  constructor(private cartService: CartService, private authStore: AuthStore, private loginDialog: LoginDialogService) {
+    effect(() => {
+  });
+  }
 
   addToCart(): void {
     if (!this.productId || this.loading()) return;
 
     if (!this.authStore.isLogged()) {
-      this.showLoginPopup.set(true);
+      this.loginDialog.open();
       return;
     }
 

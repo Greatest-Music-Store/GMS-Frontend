@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
+import { Component, effect, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { tdesignHeart, tdesignHeartFilled } from '@ng-icons/tdesign-icons';
 import { FavoriteService } from '../../../core/services/favorite/favorite';
 import { AuthStore } from '../../../core/stores/auth.store';
 import { RouterLink } from '@angular/router';
+import { LoginDialogService } from '../../../core/services/login-dialog/login-dialog-service';
 @Component({
   selector: 'app-favorite-button',
   imports: [NgIcon, RouterLink],
@@ -18,13 +19,14 @@ export class FavoriteButton implements OnInit {
 
   isFavorite = signal(false);
   loading = signal(false);
-  showLoginPopup = signal(false);
 
-  constructor(private favoriteService: FavoriteService, private authStore: AuthStore){}
+  constructor(private favoriteService: FavoriteService, private authStore: AuthStore, private loginDialog: LoginDialogService){
+    effect(() => {
+    });
+  }
 
   ngOnInit(): void {
     this.isFavorite.set(this.initialFavorite);
-
     if (!this.productId || this.initialFavorite) return;
 
     this.favoriteService.getFavoriteByProduct(this.productId).subscribe({
@@ -36,12 +38,13 @@ export class FavoriteButton implements OnInit {
       },
     });
   }
+  
 
   toggleFavorite(): void {
     if (!this.productId || this.loading()) return;
 
     if (!this.authStore.isLogged()) {
-      this.showLoginPopup.set(true);
+      this.loginDialog.open();
       return;
     }
 

@@ -6,7 +6,7 @@
         [circular]="true"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-product #item>
-            <article class="mx-2 flex h-[420px] flex-col rounded-lg border border-[#E7D8C7] bg-white p-4 shadow-sm">
+            <article class="mx-2 flex h-105 flex-col rounded-lg border border-[#E7D8C7] bg-white p-4 shadow-sm">
                 <a
                     [routerLink]="['/produto', product.productId]"
                     [state]="{ product: product }"
@@ -30,7 +30,7 @@
                     <a
                         [routerLink]="['/produto', product.productId]"
                         [state]="{ product: product }"
-                        class="mt-1 line-clamp-2 min-h-[56px] font-[Montserrat] text-xl  font-semibold text-[#42240D]">
+                        class="mt-1 line-clamp-2 min-h-14 font-[Montserrat] text-xl  font-semibold text-[#42240D]">
                         {{ product.name }}
                         <div class="flex itens-center py-1">
                         @if (product.rating <= 1) {
