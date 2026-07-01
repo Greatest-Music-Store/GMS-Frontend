@@ -30,6 +30,7 @@ export class ProductsService {
       map((response) => this.parseResponse<ProductModels[]>(response, []))
     );
   }
+  
 
   getProductById(id: string): Observable<ProductModels> {
     return this.http.get(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
@@ -51,6 +52,12 @@ export class ProductsService {
   getOffers(): Observable<ProductModels[]> {
     return this.http.get<ProductModels[]>(
       `${API_CONFIG.baseUrl}/api/product/offers`
+    );
+  }
+
+  getRecommended(): Observable<ProductModels[]> {
+    return this.http.get<ProductModels[]>(
+      `${API_CONFIG.baseUrl}/api/product/recommended`
     );
   }
 

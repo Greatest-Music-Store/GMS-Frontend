@@ -11,6 +11,7 @@ export interface ProductModels {
     quantity: number;
     categoryName: string;
     subcategoryName: string;
+    discountPercentage: number;
 
     feedbacks: FeedbackModel[];
 

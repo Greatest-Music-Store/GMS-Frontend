@@ -14,7 +14,7 @@ import { CurrencyPipe } from '@angular/common';
 export class ProductsCarrousel implements OnInit, OnChanges {
 
   @Input() filters: ProductFilters = {};
-  @Input() mode: 'products' | 'offers' = 'products';
+  @Input() mode: 'products' | 'offers' | 'recommended'= 'products';
 
   products = signal<ProductModels[]>([]);
 
@@ -36,14 +36,18 @@ export class ProductsCarrousel implements OnInit, OnChanges {
   ngOnInit(): void {
     if (this.mode === 'offers') {
       this.loadOffers();
+    } else if (this.mode === 'recommended') {
+      this.loadRecommended();
     } else {
       this.loadProducts();
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (this.mode === 'offers') {
       this.loadOffers();
+    } else if (this.mode === 'recommended') {
+      this.loadRecommended();
     } else {
       this.loadProducts();
     }
@@ -65,6 +69,17 @@ export class ProductsCarrousel implements OnInit, OnChanges {
     this.productService.getOffers().subscribe({
       next: (offers) => {
         this.products.set(offers);
+      },
+      error: () => {
+        this.products.set([]);
+      }
+    });
+  }
+
+  private loadRecommended(): void {
+    this.productService.getRecommended().subscribe({
+      next: (recommended) => {
+        this.products.set(recommended);
       },
       error: () => {
         this.products.set([]);
