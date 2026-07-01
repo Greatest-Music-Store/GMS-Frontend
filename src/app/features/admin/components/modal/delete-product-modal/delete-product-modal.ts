@@ -12,14 +12,10 @@ export class DeleteProductModal {
   product = input.required<ProductModels>();
   close = output<void>();
   deleted = output<void>();
-  constructor(private productService: ProductsService) {
-
-  }
-
+  constructor(private productService: ProductsService) {}
 
   deleteProduct() {
-    this.productService.deleteProduct(this.product().productId)
-      .subscribe({
+    this.productService.deleteProduct(this.product().productId).subscribe({
         next: () => {
           this.deleted.emit();
           this.close.emit();

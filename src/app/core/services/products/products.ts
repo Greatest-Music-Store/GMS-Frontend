@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { ProductModels } from '../../../models/product.model';
+import { ProductModels, ProductRequest } from '../../../models/product.model';
 import { API_CONFIG } from '../../api.config';
 import { ProductFilters } from '../../../models/product.model';
-import { Product } from '../../../features/product/product';
+import { CategoryModel, SubcategoryModel } from '../../../models/product.model';
 
 
 
@@ -47,7 +47,7 @@ export class ProductsService {
 
   getProductsSmall() {
     return Promise.resolve(this.getProductById);
-  }  
+  }
 
   getOffers(): Observable<ProductModels[]> {
     return this.http.get<ProductModels[]>(
@@ -91,11 +91,37 @@ export class ProductsService {
     );
   }
 
-  deleteProduct(productId: string){
+  deleteProduct(productId: string) {
     return this.http.delete<ProductModels>(
       `${API_CONFIG.baseUrl}/api/product/${productId}`
     )
   }
+
+
+  postProduct(data: ProductRequest) {
+    return this.http.post(
+      `${API_CONFIG.baseUrl}/api/product`,
+      data
+    )
+
+  }
+
+  getCategories() {
+    return this.http.get<CategoryModel[]>(
+      `${API_CONFIG.baseUrl}/api/category`
+    );
+  }
+
+  getSubcategories(categoryId: string) {
+  return this.http.get<SubcategoryModel[]>(
+    `${API_CONFIG.baseUrl}/api/Subcategory`,
+    {
+      params: {
+        id: categoryId
+      }
+    }
+  );
+}
 
   private parseResponse<T>(response: string, fallback: T): T {
     if (!response) return fallback;

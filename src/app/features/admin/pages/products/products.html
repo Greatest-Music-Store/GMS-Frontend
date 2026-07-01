@@ -110,9 +110,12 @@
   </div>
 
   @if (activeModal() === 'addProduct') {
-  <app-add-product-modal (close)="closeModal()">
+  <app-add-product-modal
+    (productAdded)="loadProducts()"
+    (close)="closeModal()">
   </app-add-product-modal>
-  }
+}
+
 
   @if (activeModal() === 'editProduct') {
   <app-edit-product-modal (close)="closeModal()">
@@ -120,10 +123,7 @@
   }
 
   @if (activeModal() === 'deleteProduct' && selectedProduct()) {
-  <app-delete-product-modal
-    [product]="selectedProduct()!"
-    (deleted)="loadProducts()"
-    (close)="closeModal()">
+  <app-delete-product-modal [product]="selectedProduct()!" (deleted)="loadProducts()" (close)="closeModal()">
   </app-delete-product-modal>
-}
+  }
 </main>
