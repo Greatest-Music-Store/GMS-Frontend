@@ -3,7 +3,7 @@ import { AddProductModal } from '../../components/modal/add-product-modal/add-pr
 import { EditProductModal } from '../../components/modal/edit-product-modal/edit-product-modal';
 import { DeleteProductModal } from '../../components/modal/delete-product-modal/delete-product-modal';
 import { ProductsService } from '../../../../core/services/products/products';
-import { ProductFilters } from '../../../../models/product.model';
+import { ProductFilters, ProductRequest } from '../../../../models/product.model';
 import { ProductModels } from '../../../../models/product.model';
 import { CurrencyPipe } from '@angular/common';
 
@@ -27,7 +27,6 @@ export class ProductsAdmPage {
 
   products = signal<ProductModels[]>([]);
   selectedProduct = signal<ProductModels | null>(null);
-
   activeModal = signal<AdminModal>(null);
 
   constructor(private productService: ProductsService) {}
